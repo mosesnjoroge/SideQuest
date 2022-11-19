@@ -1,0 +1,2 @@
+class SidequestsController < ApplicationController
+end
