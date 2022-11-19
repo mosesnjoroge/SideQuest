@@ -8,7 +8,7 @@ class SideQuest < ApplicationRecord
   validates :description, presence: true
   validates :price, numericality: { only_integer: true }
 
-
+  has_many_attached :photos
   #geocoded_by :address
   #validates :address, presence: true
  # after_validation :geocode, if:
