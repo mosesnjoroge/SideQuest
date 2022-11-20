@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 
-  before_action :set_trip, only: [:create]
+before_action :set_trip, only: [:show, :update]
 
   def index
     @trips = Trip.all
@@ -8,25 +8,37 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @category = Trip.new
   end
 
   def create
+    @trip = Trip.new(trip_params)
+    sidequests = SideQuest.all
     @trip.user = current_user
-    if @trip.save!
-      redirect_to trips_path, notice: "Your trip was successfully created"
+    if @trip.save
+      redirect_to trip_path(@trip)
     else
-      redirect_to new_trip_path, notice "Your trip details were not correct, try again"
+      redirect_to new_trip_path
     end
   end
 
   def show
+    @sidequests = SideQuest.all
+  end
 
+  def destroy
+    @trip.destroy
+    redirect_to trips_path
   end
 
   private
 
+  def trip_params
+    params.require(:trip).permit(:start_point, :end_point)
+  end
+
   def set_trip
-    @trip = Trip.find(params[:id])
+   @trip = Trip.find(params[:id])
   end
 
 end
