@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_210737) do
     t.string "description"
     t.integer "price"
     t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
+   /home/ricardogv/code/RicardoG92/ SideQuest/app/helpers t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
