@@ -1,4 +1,10 @@
 
 <h1>Here are your SideQuests</h1>
+<% @sidequests.each do |sidequest|%>
+<%= sidequest.name%><br>
+<%= sidequest.address%><br>
+<%end %><br>
 <h1>Here is your trip</h1>
-<%= link_to 'Show me my trip', sidequests_path, class: 'btn btn-outline-danger' %>
+<p>Start Point: <%= @trip.start_point%></p>
+<p>End Point: <%= @trip.end_point%></p>
+<%= link_to 'Show me my trip', side_quests_path, class: 'btn btn-outline-danger' %>

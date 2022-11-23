@@ -1,0 +1,19 @@
+<h1>New SideQuest</h1>
+
+<div class="container py-5">
+  <div class="column">
+    <div class="col-12 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h2>Add Your SideQuest</h2>
+        <%= simple_form_for  @sidequest do |f| %>
+          <%= f.input :name, placeholder: 'tim hortons' %>
+          <%= f.input :address, placeholder: '1256 wilson' %>
+          <%= f.input :description, placeholder: 'Amazing experience' %>
+          <%= f.input :price, placeholder: '5 CAD' %>
+          <%= f.submit class: 'btn btn-outline-success' %>
+          <%= link_to "Create SideQuest", root_path, class: 'btn btn-outline-danger' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

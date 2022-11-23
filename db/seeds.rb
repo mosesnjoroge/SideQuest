@@ -53,9 +53,28 @@ sidequest = SideQuest.create!({
 })
 
 
+sidequest2 = SideQuest.create!({
+  name: "Fairmont Le Château Frontenac",
+  address: " 1 Rue des Carrières, Québec, QC G1R 4P5",
+  category: category,
+  description: "The Château Frontenac is an excellent example of the grand hotels developed by railway companies in Canada in the late 1800s. Considered the world's most photographed hotel, it was designated a National Historic Site in 1981",
+  price: 100,
+  user: ricardo
+})
+
+
+
 review = Review.create({
   side_quest: sidequest,
   body: "Amazing experience. I highly recommend to visit Zoo de Granby",
+  rating: 5,
+  user: alex
+})
+
+
+review = Review.create({
+  side_quest: sidequest2,
+  body: "Amazing experience. I highly recommend to visit #{sidequest2.name}",
   rating: 5,
   user: ricardo
 })
