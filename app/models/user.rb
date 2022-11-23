@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :trips, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :side_quests, dependent: :destroy
+  has_one_attached :avatar
 
   # geocoded_by :address
   # after_validation :geocode, if:
