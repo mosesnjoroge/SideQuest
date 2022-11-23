@@ -4,6 +4,12 @@ class SidequestsController < ApplicationController
 
   def index
     @sidequests = SideQuest.all
+    @markers = @sidequests.geocoded.map do |sidequest|
+      {
+        lat: sidequest.latitude,
+        lng: sidequest.longitude
+      }
+    end
   end
 
   def new
@@ -44,7 +50,7 @@ class SidequestsController < ApplicationController
   private
 
   def set_params
-   params.require(:sidequest).permit(:name, :address, :description, :price)
+    params.require(:sidequest).permit(:name, :address, :description, :price, photos: [])
   end
 
   def set_sidequest
