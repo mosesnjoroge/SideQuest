@@ -5,8 +5,8 @@
       <div class="bg-white rounded p-3 shadow">
         <h2>Plan Your Next Trip</h2>
         <%= simple_form_for @trip do |f| %>
-          <%= f.input :start_point, placeholder: 'Morty' %>
-          <%= f.input :end_point, placeholder: 'Corgi' %>
+          <%= f.input :start_point, placeholder: '11/11/2022' %>
+          <%= f.input :end_point, placeholder: '12/11/2022' %>
           <%= f.submit class: 'btn btn-outline-success' %>
           <%= link_to "Cancel", root_path, class: 'btn btn-outline-danger' %>
         <% end %>
