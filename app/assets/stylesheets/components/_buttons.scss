@@ -1,10 +1,14 @@
-.btn-outline-primary {
-  color: #fff!important;
-  background-color: #4C6085!important;
-  border-color: #17285B!important;
+.btn-flat {
+  color: $dark-blue;
+  border: 1px solid $light-blue;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $white;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
 
-  :hover {
-  color :#17285B!important;
-  }
-
+.btn-flat:hover {
+  background: $dark-blue;
+  color:$white;
 }
