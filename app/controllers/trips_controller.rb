@@ -6,6 +6,10 @@ before_action :set_trip, only: [:show, :update]
     @trips = Trip.all
   end
 
+  def show
+    @sidequests = SideQuest.all
+  end
+
   def new
     @trip = Trip.new
     @category = Trip.new
@@ -22,9 +26,6 @@ before_action :set_trip, only: [:show, :update]
     end
   end
 
-  def show
-    @sidequests = SideQuest.all
-  end
 
   def destroy
     @trip.destroy

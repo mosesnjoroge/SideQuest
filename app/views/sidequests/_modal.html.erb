@@ -1,0 +1,20 @@
+<%# popup card %>
+<div class= 'container'>
+  <div>
+    <div class="modal">
+      <div class="modal-header">
+        <span class="close-btn">&times;</span>
+      </div>
+      <div class="modal-content">
+        <div><p>images with carousel</p></div>
+        <div><p>first box with name/address/price</p></div>
+        <div><p>description</p></div>
+        <div><p>reviews</p></div>
+      </div>
+      <div class="modal-footer">
+        <h2>button for see more reviews</h2>
+        <%= link_to 'See more reviews', sidequest_reviews_path(@sidequest), class: 'btn btn-outline-danger' %>
+      </div>
+    </div>
+  </div>
+</div>

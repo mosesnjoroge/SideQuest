@@ -24,4 +24,5 @@ class ReviewsController < ApplicationController
   def set_params
     params.require(:review).permit(:body, :rating)
   end
+
 end

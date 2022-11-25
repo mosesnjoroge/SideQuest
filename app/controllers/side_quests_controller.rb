@@ -3,8 +3,15 @@ class SideQuestsController < ApplicationController
   before_action :set_sidequest, only: [:show, :update, :destroy]
   before_action :set_review, only: [:show]
 
+
   def index
     @sidequests = SideQuest.all
+    @markers = @sidequests.geocoded.map do |sidequest|
+      {
+        lat: sidequest.latitude,
+        lng: sidequest.longitude
+      }
+    end
   end
 
   def new
@@ -44,7 +51,7 @@ class SideQuestsController < ApplicationController
   private
 
   def set_params
-   params.require(:side_quest).permit(:name, :address, :description, :price)
+    params.require(:sidequest).permit(:name, :address, :description, :price, photos: [])
   end
 
   def set_sidequest
