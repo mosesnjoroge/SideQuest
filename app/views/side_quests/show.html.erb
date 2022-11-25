@@ -10,7 +10,10 @@
     <% if @review %>
     <%= @review.body%>
     <%end%><br>
-    <%= link_to 'Create my SideQuest', new_side_quest_path, class: 'btn btn-outline-primary' %>
-    <%= link_to 'Leave a review', new_side_quest_review_path(@sidequest.id), class: 'btn btn-outline-danger' %>
+    <%#= link_to 'Leave a review', new_side_quest_review_path(@sidequest.id), class: 'btn btn-outline-danger' %>
   </div>
+
+</div>
+<div class="footer"id="footer-info">
+  <%= link_to 'Add', new_side_quest_path, class: 'btn btn-outline-primary' %>
 </div>

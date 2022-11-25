@@ -6,10 +6,17 @@
         <%= simple_form_for @trip do |f| %>
           <%= f.input :start_point, placeholder: '11/11/2022' %>
           <%= f.input :end_point, placeholder: '12/11/2022' %>
-          <%= f.submit class: 'btn btn-outline-success' %>
-          <%= link_to "Cancel", root_path, class: 'btn btn-outline-danger' %>
+          <div class = "footer" id= "footer-info">
+            <div>
+              <%= f.submit %>
+            </div>
+          </div>
+          <%#= link_to "Cancel", root_path, class: 'btn btn-outline-danger' %>
         <% end %>
       </div>
     </div>
   </div>
+</div>
+<div>
+
 </div>
