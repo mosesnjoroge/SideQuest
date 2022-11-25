@@ -44,14 +44,14 @@ class SideQuestsController < ApplicationController
   end
 
   def destroy
-    @side_quest.destroy
+    @sidequest.destroy
     redirect_to side_quests_path, notice: 'Your details were not correct, try again'
   end
 
   private
 
   def set_params
-    params.require(:sidequest).permit(:name, :address, :description, :price, photos: [])
+    params.require(:side_quest).permit(:name, :address, :description, :price)
   end
 
   def set_sidequest
