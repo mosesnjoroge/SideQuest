@@ -1,6 +1,8 @@
-class SidequestsController < ApplicationController
+class SideQuestsController < ApplicationController
 
   before_action :set_sidequest, only: [:show, :update, :destroy]
+  before_action :set_review, only: [:show]
+
 
   def index
     @sidequests = SideQuest.all
@@ -17,14 +19,13 @@ class SidequestsController < ApplicationController
   end
 
   def create
-    raise
-    @sidequest = SideQuest.create(side_quest)
+    @sidequest = SideQuest.create(set_params)
     @sidequest.user = current_user
-    @sidequest.category = params[:category]
+    @sidequest.category = Category.first
     if @sidequest.save!
-      redirect_to sidequest_path, notice: "Sidequest was successfully created"
+      redirect_to side_quest_path(@sidequest), notice: "Sidequest was successfully created"
     else
-      redirect_to new_sidequest_path, notice: "Sidequest details were not correct"
+      redirect_to new_side_quest_path, notice: "Sidequest details were not correct"
     end
   end
 
@@ -36,15 +37,15 @@ class SidequestsController < ApplicationController
 
   def update
     if @sidequest.update(side_quest)
-      redirect_to sidequest_path, notice: "Sidequest was successfully updated"
+      redirect_to side_quest_path, notice: "Sidequest was successfully updated"
     else
-      redirect_to new_sidequest_path, notice: 'Your details were not correct, try again'
+      redirect_to new_side_quest_path, notice: 'Your details were not correct, try again'
     end
   end
 
   def destroy
     @side_quest.destroy
-    redirect_to sidequests_path, notice: 'Your details were not correct, try again'
+    redirect_to side_quests_path, notice: 'Your details were not correct, try again'
   end
 
   private
@@ -55,5 +56,9 @@ class SidequestsController < ApplicationController
 
   def set_sidequest
     @sidequest = SideQuest.find(params[:id])
+  end
+
+  def set_review
+   @review = Review.find_by(side_quest_id: params[:id])
   end
 end
