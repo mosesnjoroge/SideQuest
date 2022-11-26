@@ -1,4 +1,3 @@
-<h1>Insert the starting point</h1>
 <div class="container py-5">
   <div class="column">
     <div class="col-12 offset-lg-3">
@@ -7,10 +6,17 @@
         <%= simple_form_for @trip do |f| %>
           <%= f.input :start_point, placeholder: '11/11/2022' %>
           <%= f.input :end_point, placeholder: '12/11/2022' %>
-          <%= f.submit class: 'btn btn-outline-success' %>
-          <%= link_to "Cancel", root_path, class: 'btn btn-outline-danger' %>
+          <div class = "footer" id= "footer-info">
+            <div>
+              <%= f.submit %>
+            </div>
+          </div>
+          <%#= link_to "Cancel", root_path, class: 'btn btn-outline-danger' %>
         <% end %>
       </div>
     </div>
   </div>
+</div>
+<div>
+
 </div>
