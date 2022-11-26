@@ -8,6 +8,12 @@ before_action :set_trip, only: [:show, :update]
 
   def show
     @sidequests = SideQuest.all
+    # @markers = [
+    #   {
+    #     lat: @sidequests.user.latitude,
+    #     lng: @sidequests.user.longitude
+    #   }
+    # ]
   end
 
   def new
