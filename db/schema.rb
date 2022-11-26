@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_26_164414) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_190901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_164414) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,15 +94,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_164414) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.string "start_point"
-    t.string "end_point"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "start_latitude"
-    t.float "start_longitude"
-    t.float "end_latitude"
-    t.float "end_longitude"
+    t.integer "start_location_id"
+    t.integer "end_location_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
