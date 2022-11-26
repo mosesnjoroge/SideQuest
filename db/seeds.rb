@@ -12,6 +12,7 @@ SideQuest.delete_all
 Category.delete_all
 Trip.delete_all
 User.delete_all
+Location.delete_all
 
 
 ricardo = User.create({
@@ -24,17 +25,21 @@ alex = User.create({
   password:"Ricardo1234"
 })
 
+home = Location.create(name: "home", address: "4200 edouard montpetit")
+place1 = Location.create(name: "4571 avenue wilson", address: "4571 avenue wilson")
+place2 = Location.create(name: "4171 avenue wilson", address: "4171 avenue wilson")
+
 
 trip1 = Trip.create({
-  start_point: "4200 edouard montpetit",
-  end_point:"4571 avenue wilson",
+  start_location: home,
+  end_location: place1,
   user: ricardo
 })
 
 
 trip2 = Trip.create({
-  start_point: "4000 edouard montpetit",
-  end_point:"4171 avenue wilson",
+  start_location: home,
+  end_location: place2,
   user: alex
 })
 
