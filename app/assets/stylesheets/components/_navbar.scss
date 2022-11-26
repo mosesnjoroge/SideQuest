@@ -19,9 +19,12 @@
 };
 
 .navbar-sidequests {
+  display: flex;
   height: 72px;
   width: auto;
-  background: #E5E9F7
+  background: #E5E9F7;
+  justify-content: space-between;
+  align-items: center;
 
 }
 
