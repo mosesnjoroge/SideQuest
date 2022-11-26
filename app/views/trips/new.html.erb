@@ -4,8 +4,8 @@
       <div class="bg-white rounded p-3 shadow">
         <h2>Plan Your Next Trip</h2>
         <%= simple_form_for @trip do |f| %>
-          <%= f.input :start_point %>
-          <%= f.input :end_point %>
+          <%= f.input :start_location_id %>
+          <%= f.input :end_location_id %>
           <div class = "footer" id= "footer-info">
             <div>
               <%= f.submit %>
