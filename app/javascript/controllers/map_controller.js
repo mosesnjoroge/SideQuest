@@ -8,11 +8,10 @@ export default class extends Controller {
   }
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v11"
-    })
+    });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
@@ -30,7 +29,7 @@ export default class extends Controller {
       customMarker.className = "marker"
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
+        .addTo(this.map);
     })
   }
 }

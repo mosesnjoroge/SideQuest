@@ -29,10 +29,16 @@ class SideQuestsController < ApplicationController
     end
   end
 
-  def show;
+  def show
+    @markers = [
+      {
+        lat: @sidequest.latitude,
+        lng: @sidequest.longitude
+      }
+    ]
   end
 
-  def edit;
+  def edit
   end
 
   def update
