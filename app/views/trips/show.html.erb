@@ -24,15 +24,15 @@
       <div class = "trip-title">
         <p>Start Point: <%= @trip.start_point%></p>
       </div>
-        <div class = "trip-info">
-          <ul>
-            <% @sidequests.each do |sidequest|%>
-              <li>
-                <%= sidequest.name%>
-              </li>
-            <%end %>
-          </ul>
-        </div>
+      <div class = "trip-info">
+        <ul>
+          <% @sidequests.each do |sidequest|%>
+            <li>
+              <%= sidequest.name%>
+            </li>
+          <%end %>
+        </ul>
+      </div>
       <div class = "trip-title">
         <p>End Point: <%= @trip.end_point%></p>
       </div>
@@ -40,5 +40,5 @@
   </div>
 </div>
 <div class="footer"id="footer-info">
-  <%= link_to 'Navigate', side_quests_path, class: 'btn btn-outline-danger' %>
+  <%= link_to 'Navigate', side_quests_path %>
 </div>
