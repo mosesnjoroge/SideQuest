@@ -1,4 +1,3 @@
-<h1>Insert the starting point</h1>
 <div class="container py-5">
   <div class="column">
     <div class="col-12 offset-lg-3">
@@ -7,8 +6,9 @@
         <%= simple_form_for [@sidequest, @review] do |f| %>
           <%= f.input :body %>
           <%= f.input :rating %>
-          <%= f.submit class: 'btn btn-outline-success' %>
-          <%= link_to "Cancel", root_path, class: 'btn btn-outline-danger' %>
+          <div class="footer"id="footer-info">
+            <%= f.submit class: 'btn btn-outline-success' %>
+          </div>
         <% end %>
       </div>
   </div>

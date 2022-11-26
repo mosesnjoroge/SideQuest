@@ -4,14 +4,14 @@
 // 3. You can override them below!
 
 // General style
-$font-family-sans-serif:  $body-font;
+$font-family-josefin-sans:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 #112776;
 $font-size-base: 1rem;
 
 // Colors
-$body-color: $gray;
-$primary:    #4C6085;
+$body-color: #6e7bab;
+$primary:    #091f4b;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -23,4 +23,3 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
-$primary: #4C6085;
