@@ -1,14 +1,14 @@
 .btn-flat {
-  color: $dark-blue;
+  color: $light-blue!important;
   border: 1px solid $light-blue;
   padding: 8px 24px;
   border-radius: 4px;
-  background: $white;
+  background: $dark-blue!important;
   transition: background 0.3s ease;
   text-decoration: none;
 }
 
 .btn-flat:hover {
   background: $dark-blue;
-  color:$white;
+  color:$light-blue;
 }
