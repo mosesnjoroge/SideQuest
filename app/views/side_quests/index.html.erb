@@ -7,7 +7,11 @@
       <% @sidequests.each do |sidequest|%>
         <a href="/side_quests/<%=sidequest.id%>"><%= sidequest.name%>
         <%= sidequest.address%>
-        <%= sidequest.description%></a>
+        <br>
+        </a>
+        <p><%= sidequest.description%></p>
+        <br>
+        <br>
       <%end%>
     </div>
   </div>
