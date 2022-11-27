@@ -23,7 +23,7 @@ before_action :set_trip, only: [:show, :update]
 
   def create
     @trip = Trip.new(trip_params)
-    sidequests = SideQuest.all
+    @sidequests = SideQuest.all
     @trip.user = current_user
     if @trip.save
       redirect_to trip_path(@trip)
@@ -41,7 +41,7 @@ before_action :set_trip, only: [:show, :update]
   private
 
   def trip_params
-    params.require(:trip).permit(:start_point, :end_point)
+    params.require(:trip).permit(:start_location_id, :end_location_id)
   end
 
   def set_trip
