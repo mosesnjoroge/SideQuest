@@ -1,11 +1,11 @@
-<div class="navbar-sidequests">
+<%# <div class="navbar-sidequests">
   <div class = "knight-logo">
     <img src="app/assets/images/Groupnavbar-knight.png" alt="Knight on Horseback Logo">
   </div>
   <div class = "avatar-hex">
   </div>
-</div>
-<div class="content">
+</div> %>
+<%# <div class="content">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -27,42 +27,28 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-<div>
+<div> %>
+<div class = "sidequest-photo">
+  <%#= cl_image_tag @sidequests.photo.key, height: 200, width: 100, crop: :fit %>
+  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier"%>
+</div>
 <div class="preferences-form">
-  <%= simple_form_for @location do |f| %>
-    <%= f.input :address, :label => "Start Point" %>
-    <%= f.input :name, :label =>  "End Point"%>
-    <div>
-      <label class="form-label range optional" for="user_mood">Distance From Main Road</label>
-      <input class="form-range numeric range optional" type="range" step="1" name="user[mood]" id="user_mood">
-    </div>
+  <div class = "container">
+    <%= simple_form_for @location do |f| %>
+      <%= f.input :address, :label => "Start Point" %>
+      <%= f.input :name, :label =>  "End Point"%>
+      <div>
+        <label class="form-label range optional" for="user_mood">Distance From Main Road</label>
+        <input class="form-range numeric range optional" type="range" step="1" name="user[mood]" id="user_mood">
+      </div>
+  </div>
     <div class = "footer-info text-center">
       <div class = "btn">
-        <%= f.submit%>
+        <%= f.submit class: "btn btn-link"%>
       </div>
     </div>
   <%end %>
 </div>
-
-
-
-    <div class="preferences-form">
-      <%= simple_form_for @location do |f| %>
-        <%= f.input :address, :label => "Start Point Location" %>
-        <%= f.input :name, :label =>  "End Point Location"%>
-        <label class="form-label range optional" for="user_mood">Distance From Main Road</label>
-        <input class="form-range numeric range optional" type="range" step="1" name="user[mood]" id="user_mood">
-        <%#= link_to "Cancel", root_path, class: 'btn btn-outline-danger' %>
-        <%= f.submit %>
-      <%end %>
-    </div>
-  </div>
-  <div class="footer">
-  </div>
-</div>
-
-
-
     <%# <div class="preferences-form">
       <%= simple_form_for @trip do |f| %>
         <%# <% =# f.input :start_point %>
