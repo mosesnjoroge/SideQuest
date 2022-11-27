@@ -26,8 +26,8 @@ alex = User.create({
 })
 
 home = Location.create(name: "home", address: "4200 edouard montpetit")
-place1 = Location.create(name: "4571 avenue wilson", address: "4571 avenue wilson")
-place2 = Location.create(name: "4171 avenue wilson", address: "4171 avenue wilson")
+place1 = Location.create(name: "380 Sussex Dr, Ottawa, ON K1N 9N4", address: "380 Sussex Dr, Ottawa, ON K1N 9N4")
+place2 = Location.create(name: "380 Sussex Dr, Ottawa, ON K1N 9N4", address: "380 Sussex Dr, Ottawa, ON K1N 9N4")
 
 
 trip1 = Trip.create({
