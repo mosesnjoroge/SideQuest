@@ -22,7 +22,7 @@
   <div class = "container">
     <div class = "trip-card">
       <div class = "trip-title">
-        <p>Start Point: <%= @trip.start_point%></p>
+        <p>Start Point: <%= @trip.start_location.address%></p>
       </div>
       <div class = "trip-info">
         <ul>
@@ -34,7 +34,7 @@
         </ul>
       </div>
       <div class = "trip-title">
-        <p>End Point: <%= @trip.end_point%></p>
+        <p>End Point: <%= @trip.end_location.address%></p>
       </div>
     </div>
   </div>

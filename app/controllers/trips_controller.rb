@@ -19,6 +19,7 @@ before_action :set_trip, only: [:show, :update]
   def new
     @trip = Trip.new
     @category = Trip.new
+    @location = Location.new
   end
 
   def create
