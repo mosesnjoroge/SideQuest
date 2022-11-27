@@ -10,13 +10,16 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.create(set_params)
-    @location.user = current_user
-    if @location.save!
-      redirect_to root_path, notice: "Location was successfully created"
-    else
-      redirect_to root_path, notice: "Location details were not correct"
-    end
+    #@location = Location.create(set_params)
+    #@location.user = current_user
+    #if @location.save!
+     @trip = Trip.first
+      redirect_to trip_path(@trip), notice: "Your Trip was successfully created"
+    #redirect_to trip_path(@trip), notice: "Your Trip was successfully created"
+
+    #else
+     #redirect_to root_path, notice: "Location details were not correct"
+    #end
   end
 
   def destroy
@@ -27,7 +30,8 @@ class LocationsController < ApplicationController
   private
 
   def set_params
-    params.require(:location).permit(:name, :address)
+    params.require(:location).permit()
+    #params.require(:location).permit(:name, :address)
   end
 
   def set_location
