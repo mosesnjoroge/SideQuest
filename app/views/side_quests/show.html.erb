@@ -1,23 +1,18 @@
 <div class = "container text-center">
-  <div style="width: 100%; height: 50%;"
+  <div style="width: 100%; height: 150px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" >
   </div>
   <div>
-    <%= @sidequest.name %>
-    <%= @sidequest.address %><br>
-    <% if @review %>
-    <%= @review.body%>
-    <%end%>
+    <p><%= @sidequest.name %></p>
+    <p><%= @sidequest.address %></p>
   </div>
-
-    <div style="width: 50%; height: 600px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" >
-    </div>
- </div>
+  <%= link_to 'See More Reviews',side_quest_reviews_path(@sidequest), class: 'btn btn-outline-primary' %>
+  <div>
+    <%= link_to 'Add a Review',new_side_quest_review_path(@sidequest), class: 'btn btn-outline-primary' %>
+  </div>
+</div>
 <div class="footer"id="footer-info">
-  <%= link_to 'Add', new_side_quest_path, class: 'btn btn-outline-primary' %>
+  <%= link_to 'Add', new_side_quest_path %>
 </div>
