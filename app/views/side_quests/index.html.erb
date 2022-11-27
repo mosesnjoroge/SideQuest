@@ -1,5 +1,12 @@
 <div class = "container text-center">
   <div>
+  <div class = "container text-center">
+  <div style="width: 100%; height: 150px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%=  ENV['MAPBOX_API_KEY'] %>" >
+  </div>
+  <div>
     <h1>Here is a map with all your SideQuests</h1>
     <%# still working on this !! PLEASE DON NOT TOUCH  %>
     <%#= render 'modal', sidequest: @sidequest %>
@@ -10,7 +17,6 @@
         <br>
         </a>
         <p><%= sidequest.description%></p>
-        <br>
         <br>
       <%end%>
     </div>
