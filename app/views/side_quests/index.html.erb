@@ -4,15 +4,14 @@
     <%# still working on this !! PLEASE DON NOT TOUCH  %>
     <%#= render 'modal', sidequest: @sidequest %>
     <div>
-    <% @sidequests.each do |sidequest|%>
-    <a href="/side_quests/<%=sidequest.id%>"><%= sidequest.name%>
-    <%= sidequest.address%>
-    <%= sidequest.description%></a>
-    <br>
-    <br>
-    <%end%>
+      <% @sidequests.each do |sidequest|%>
+        <a href="/side_quests/<%=sidequest.id%>"><%= sidequest.name%>
+        <%= sidequest.address%>
+        <%= sidequest.description%></a>
+      <%end%>
     </div>
-
   </div>
-  <%= link_to 'Show me this specific SideQuest', side_quests_path(@sidequests.last), class: 'btn btn-outline-success' %>
+</div>
+<div class="footer"id="footer-info">
+  <%= link_to 'Show me this specific SideQuest', side_quests_path(@sidequests.last) %>
 </div>

@@ -14,6 +14,14 @@ class SideQuestsController < ApplicationController
     end
   end
 
+  def show
+    @review = Review.new
+    @markers = [{
+        lat: @sidequest.latitude,
+        lng: @sidequest.longitude
+      }]
+  end
+
   def new
     @sidequest = SideQuest.new
   end
@@ -29,14 +37,6 @@ class SideQuestsController < ApplicationController
     end
   end
 
-  def show
-    @markers = [
-      {
-        lat: @sidequest.latitude,
-        lng: @sidequest.longitude
-      }
-    ]
-  end
 
   def edit
   end

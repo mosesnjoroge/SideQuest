@@ -1,15 +1,11 @@
-<div class="container py-5">
-  <div class="column">
-    <div class="col-12 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h2>Leave Your Review</h2>
-        <%= simple_form_for [@sidequest, @review] do |f| %>
-          <%= f.input :body %>
-          <%= f.input :rating %>
-          <div class="footer"id="footer-info">
-            <%= f.submit class: 'btn btn-outline-success' %>
-          </div>
-        <% end %>
-      </div>
+<div class = 'container mt-5'>
+  <div class = 'card'>
+    <div class = 'container'>
+      <%= simple_form_for [@sidequest, @review] do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :body%>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
 </div>

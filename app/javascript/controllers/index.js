@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
-import DynamicButtonController from "./dynamic_button_controller"
-application.register("dynamic-button", DynamicButtonController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
+import TurboController from "./turbo_controller"
+application.register("turbo", TurboController)

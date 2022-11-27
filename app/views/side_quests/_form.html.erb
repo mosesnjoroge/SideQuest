@@ -1,13 +1,18 @@
-
-    <div class="form">
-      <h2>Post your latest SideQuest!</h2>
-          <%= simple_form_for  sidequest do |f| %>
-          <span id="name"><%= f.input :name, placeholder: 'tim hortons' %></span>
-          <span id="address"><%= f.input :address, placeholder: '1256 wilson' %></span>
-          <span id="category"><%= f.input :category, placeholder: 'type of sidequest' %></span>
-          <span id="description"><%= f.input :description, placeholder: 'Amazing experience' %></span>
-          <span id="description"><%= f.input :price, placeholder: '5 CAD' %></span>
-          <%= link_to 'Back', side_quests_path, class: 'btn btn-outline-danger' %>
+<div class="container py-5">
+  <div class="column">
+    <div class="col-12 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h2>Post a Siqequest</h2>
+        <%= simple_form_for  sidequest do |f| %>
+          <%= f.input :name, placeholder: 'tim hortons' %>
+          <%= f.input :address, placeholder: '1256 wilson' %>
+          <%= f.input :category, placeholder: 'type of sidequest' %>
+          <%= f.input :description, placeholder: 'Amazing experience' %>
+          <%= f.input :price, placeholder: '5 CAD' %>
           <%= f.submit class: 'btn btn-outline-success' %>
-          <% end %>
+          <%= link_to 'Back', side_quests_path, class: 'btn btn-outline-danger' %>
+        <% end %>
+      </div>
     </div>
+  </div>
+</div>
