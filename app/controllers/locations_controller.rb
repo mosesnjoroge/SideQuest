@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:destroy]
+  before_action :set_location, only: %i[destroy]
 
   def index
     @locations = Location.all

@@ -1,6 +1,5 @@
 class TripsController < ApplicationController
-
-before_action :set_trip, only: [:show, :update]
+  before_action :set_trip, only: %i[show update]
 
   def index
     @trips = Trip.all
@@ -33,7 +32,6 @@ before_action :set_trip, only: [:show, :update]
     end
   end
 
-
   def destroy
     @trip.destroy
     redirect_to trips_path
@@ -48,5 +46,4 @@ before_action :set_trip, only: [:show, :update]
   def set_trip
    @trip = Trip.find(params[:id])
   end
-
 end
