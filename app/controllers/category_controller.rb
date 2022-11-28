@@ -1,6 +1,6 @@
 class CategoryController < ApplicationController
 
   def new
-raise
+    raise
   end
 end

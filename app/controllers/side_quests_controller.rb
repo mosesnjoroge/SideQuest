@@ -1,7 +1,7 @@
 class SideQuestsController < ApplicationController
 
-  before_action :set_sidequest, only: [:show, :update, :destroy]
-  before_action :set_review, only: [:show]
+  before_action :set_sidequest, only: %i[show update destroy]
+  before_action :set_review, only: %i[show]
 
 
   def index
@@ -15,6 +15,7 @@ class SideQuestsController < ApplicationController
   end
 
   def show
+    @reviews = Review.first(3)
     @review = Review.new
     @markers = [{
         lat: @sidequest.latitude,
