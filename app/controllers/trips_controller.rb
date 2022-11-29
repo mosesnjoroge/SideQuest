@@ -1,13 +1,15 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show update]
-
+  # before_action :set_sidequest, only: %i[index]
 
   def index
+    @trips = current_user.trips
     @trips = Trip.all
   end
 
   def show
     @sidequests = SideQuest.first(3)
+    # @sidequests = Sidequest.all
     # @markers = @trip.geocoded.map do
     # {
     #   lat: @trip.start_location.latitude,
@@ -45,6 +47,10 @@ class TripsController < ApplicationController
   end
 
   def set_trip
-   @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:id])
+  end
+
+  def set_sidequest
+    @sidequest = SideQuest.find(params[:id])
   end
 end

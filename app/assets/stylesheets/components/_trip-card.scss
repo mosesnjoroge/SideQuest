@@ -12,3 +12,12 @@
   background-color: $dark-blue;
   color: $light-blue;
 }
+
+.trip-eta-cards{
+  display: flex;
+  // place-content: space-between;
+  position: fixed;
+  top: 595px;
+  background-color: $dark-blue;
+  color: $light-blue;
+}
