@@ -1,0 +1,23 @@
+.trip-card {
+  position: fixed;
+  top: 408px;
+  display: grid;
+  justify-items: normal;
+  width: 100%;
+}
+
+.trip-title {
+  display: flex;
+  justify-content: center;
+  background-color: $dark-blue;
+  color: $light-blue;
+}
+
+.trip-eta-cards{
+  display: flex;
+  // place-content: space-between;
+  position: fixed;
+  top: 595px;
+  background-color: $dark-blue;
+  color: $light-blue;
+}
