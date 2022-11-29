@@ -1,44 +1,43 @@
-<div class = 'container'>
-  <div>
-    <h1>Here's a map with your SideQuests</h1>
-    <%# <style>
-      .marker {
-      display: block;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      padding: 0;
-      }
-    </style>
-     <div style="width: 100%; height: 50%;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>
-        <%# data-map-api-key-value="= ENV['MAPBOX_API_KEY']"> %>
-      </div>
-  </div>
+<%# <div>
+  <h1>Here's a map with your SideQuests</h1>
+    <div style="width: 100%; height: 50%;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>
+      <%# data-map-api-key-value="= ENV['MAPBOX_API_KEY']"> %>
+    <%# </div>
+</div> %>
 
-  </div>
-  <div>
-  <div class = "container">
-    <div class = "trip-card">
-      <div class = "trip-title">
-        <p>Start Point: <%= @trip.start_location.address%></p>
-      </div>
-      <div class = "trip-info">
-        <ul>
-          <% @sidequests.each do |sidequest|%>
-            <li>
-              <%= sidequest.name%>
-            </li>
-          <%end %>
-        </ul>
-      </div>
-      <div class = "trip-title">
-        <p>End Point: <%= @trip.end_location.address%></p>
-      </div>
+<div class = "trip-card">
+    <div class = "trip-title">
+
+      <p><i class="fa-solid fa-star">
+      </i>
+        <div>
+          Start Point:
+          <%= @trip.end_location.address%>
+        </div>
+      </p>
     </div>
+  <div class = "trip-info">
+    <ul>
+      <% @sidequests.each do |sidequest|%>
+        <li>
+          <%= link_to sidequest.name, side_quest_path(sidequest.id)%>
+        </li>
+      <%end %>
+    </ul>
+  </div>
+  <div class = "trip-title">
+    <p><i class="fa-solid fa-star">
+      </i>
+      <div>
+        End Point:
+        <%= @trip.start_location.address%>
+      </div>
+    </p>
   </div>
 </div>
+
 <div class = "footer-info text-center">
   <div class = "btn">
     <%= link_to 'Navigate', side_quests_path, class: "btn btn-link" %>

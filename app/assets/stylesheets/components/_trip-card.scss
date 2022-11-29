@@ -1,10 +1,14 @@
+.trip-card {
+  position: fixed;
+  top: 408px;
+  display: grid;
+  justify-items: normal;
+  width: 100%;
+}
+
 .trip-title {
   display: flex;
   justify-content: center;
   background-color: $dark-blue;
   color: $light-blue;
-}
-
-.trip-info {
-  background-color: $light-blue;
 }

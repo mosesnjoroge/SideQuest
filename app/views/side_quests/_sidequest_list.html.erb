@@ -1,0 +1,6 @@
+<% @sidequests.each do |sidequest|%>
+  <a href="/side_quests/<%=sidequest.id%>"><%= sidequest.name%>
+  <%= sidequest.address%>
+  </a>
+  <p><%= sidequest.description%></p>
+<%end%>
