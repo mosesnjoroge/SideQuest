@@ -8,14 +8,19 @@
   color: $dark-blue;
 }
 
-#footer-info {
+.footer-info {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 3.5rem;
   text-decoration: none;
+  background-color: $light-yellow;
 }
 
 .btn {
-  width: 100%
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block-start: 0px;
+  width: 100%;
 }

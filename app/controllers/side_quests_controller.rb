@@ -1,24 +1,27 @@
 class SideQuestsController < ApplicationController
 
-  before_action :set_sidequest, only: [:show, :update, :destroy]
-  before_action :set_review, only: [:show]
+  before_action :set_sidequest, only: %i[show update destroy]
+  before_action :set_review, only: %i[show]
 
 
   def index
     @sidequests = SideQuest.all
     @markers = @sidequests.geocoded.map do |sidequest|
+
       {
         lat: sidequest.latitude,
-        lng: sidequest.longitude
+        lng: sidequest.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
       }
     end
   end
 
   def show
+    @reviews = Review.first(3)
     @review = Review.new
     @markers = [{
         lat: @sidequest.latitude,
-        lng: @sidequest.longitude
+        lng: @sidequest.longitude,
       }]
   end
 

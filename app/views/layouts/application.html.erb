@@ -14,12 +14,10 @@
   </head>
 
   <body>
-  <div id="page-container">
+  <div id="page-container"style = "background-color:#E5E9F7">
     <div id="content-wrap">
       <%= render "shared/navbar" %>
       <%= render "shared/flashes" %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       <%= yield %>
       <%#= turbo_frame_tag "remote_modal" %>
     </div>
