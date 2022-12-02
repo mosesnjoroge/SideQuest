@@ -1,4 +1,8 @@
 .preferences-form {
   position: 300px;
   border-radius: 10px;
+  .container {
+      position: fixed;
+      top: 300px;
+  }
 }
