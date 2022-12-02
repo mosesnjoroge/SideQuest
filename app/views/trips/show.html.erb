@@ -4,7 +4,7 @@
   data-map-api-key-value="<%=  ENV['MAPBOX_API_KEY'] %>" >
 </div>
 
-<div class = "trip-card">
+<div class = "trip-card container">
     <div class = "trip-title">
       <p><i class="fa-solid fa-star">
       </i>
@@ -14,24 +14,24 @@
         </div>
       </p>
     </div>
-  <div class = "trip-info">
-    <ul>
-      <% @sidequests2.each do |sidequest|%>
-        <li>
-          <%= link_to sidequest.name, side_quest_path(sidequest.id)%>
-        </li>
-      <%end %>
-    </ul>
-  </div>
-  <div class = "trip-title">
-    <p><i class="fa-solid fa-star">
-      </i>
-      <div>
-        End Point:
-        <%= @trip.end_location.address%>
-      </div>
-    </p>
-  </div>
+    <div class = "trip-info">
+      <ul>
+        <% @sidequests2.each do |sidequest|%>
+          <li>
+            <%= link_to sidequest.name, side_quest_path(sidequest.id)%>
+          </li>
+        <%end %>
+      </ul>
+    </div>
+    <div class = "trip-title">
+      <p><i class="fa-solid fa-star">
+        </i>
+        <div>
+          End Point:
+          <%= @trip.end_location.address%>
+        </div>
+      </p>
+    </div>
 </div>
 <div class = "footer-info text-center">
   <div class = "btn">
