@@ -17,7 +17,7 @@ class SideQuestsController < ApplicationController
   end
 
   def show
-    @reviews = Review.first(3)
+    @reviews = Review.first(2)
     @review = Review.new
     @markers = [{
         lat: @sidequest.latitude,
