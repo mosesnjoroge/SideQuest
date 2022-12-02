@@ -1,13 +1,4 @@
-<%# <div>
-  <h1>Here's a map with your SideQuests</h1>
-    <div style="width: 100%; height: 50%;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>
-      <%# data-map-api-key-value="= ENV['MAPBOX_API_KEY']"> %>
-    <%# </div>
-</div> %>
-<div>
-<div style="width: 100%; height: 526px;"
+<div style="width: 100%; height: 340px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%=  ENV['MAPBOX_API_KEY'] %>" >
@@ -15,7 +6,6 @@
 
 <div class = "trip-card">
     <div class = "trip-title">
-
       <p><i class="fa-solid fa-star">
       </i>
         <div>
@@ -33,26 +23,17 @@
       <%end %>
     </ul>
   </div>
-
-  <%# <div class = "trip-eta-cards">
-    <div class = "trip-eta-card">
-      <p>eta: x hours</p>
-    </div>
-    <div class = "trip-eta-card2">
-      <p>distance: x- km</p>
-    </div> %>
+  <div class = "trip-title">
+      <p><i class="fa-solid fa-star">
+        </i>
+        <div>
+          End Point:
+          <%= @trip.end_location.address%>
+        </div>
+      </p>
   </div>
 </div>
 
-<div class = "trip-title">
-    <p><i class="fa-solid fa-star">
-      </i>
-      <div>
-        End Point:
-        <%= @trip.end_location.address%>
-      </div>
-    </p>
-  </div>
 <div class = "footer-info text-center">
   <div class = "btn">
     <%= link_to 'Navigate', side_quests_path, class: "btn btn-link" %>
