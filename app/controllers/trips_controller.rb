@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[show update]
+  before_action :set_trip, only: %i[show update destroy]
   # before_action :set_sidequest, only: %i[index]
 
   def index
@@ -18,13 +18,6 @@ class TripsController < ApplicationController
       }
     end
     @sidequests2 = SideQuest.first(6)
-    # @sidequests = Sidequest.all
-    # @markers = @trip.geocoded.map do
-    # {
-    #   lat: @trip.start_location.latitude,
-    #   lng: @trip.end_location.longitude
-    # }
-    # end
   end
 
   def new
@@ -44,6 +37,8 @@ class TripsController < ApplicationController
       redirect_to new_trip_path
     end
   end
+
+  def update; end
 
   def destroy
     @trip.destroy

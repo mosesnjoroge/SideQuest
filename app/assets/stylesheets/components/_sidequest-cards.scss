@@ -1,8 +1,12 @@
 .sidequest-card {
   position: fixed;
-  top: 549px;
   display: grid;
   justify-items: normal;
   width: 100%;
-  right: -39px;
+  color: $dark-blue;
+}
+
+.sidequest-review-card {
+  position: fixed;
+  top: 370px;
 }

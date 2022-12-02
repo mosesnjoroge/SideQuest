@@ -2,17 +2,13 @@
   <div class="column">
     <div class="col-12 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
+        <h2 class = 'text-center'>Leave a Review</h2>
         <%= simple_form_for [@sidequest, @review] do |f| %>
           <%= f.input :rating, collection: 0..5 %>
-          <%= f.input :body%>
+          <%= f.input :body, :label => "Review"%>
           <%= f.submit class: 'btn-flat' %>
         <% end %>
       </div>
     </div>
-  </div>
-</div>
-<div class = "footer-info text-center">
-  <div class = "btn">
-    <%= link_to "Back", side_quests_path, class: "btn btn-link"%>
   </div>
 </div>
