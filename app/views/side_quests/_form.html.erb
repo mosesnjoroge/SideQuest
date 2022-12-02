@@ -1,8 +1,10 @@
-<div class="container py-5">
+<div class="container">
   <div class="column">
-    <div class="col-12 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h2>Post a Siqequest</h2>
+    <div class="col-12 offset-sm-3">
+      <div class="rounded p-2 shadow">
+        <small>
+          <h2>Post a Sidequest</h2>
+        </small>
         <%= simple_form_for  sidequest do |f| %>
           <%= f.input :name, placeholder: 'tim hortons' %>
           <%= f.input :address, placeholder: '1256 wilson' %>
@@ -13,10 +15,5 @@
         <% end %>
       </div>
     </div>
-  </div>
-</div>
-<div class = "footer-info text-center">
-  <div class = "btn">
-    <%= link_to 'Back', side_quests_path, class: "btn btn-link" %>
   </div>
 </div>
