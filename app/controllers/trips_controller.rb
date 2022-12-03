@@ -11,8 +11,7 @@ class TripsController < ApplicationController
     @sidequests = SideQuest.all
     @locations = Location.limit(2)
     @markers = @sidequests.geocoded.map do |sidequest|
-
-      {
+         {
         lat: sidequest.latitude,
         lng: sidequest.longitude,
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
