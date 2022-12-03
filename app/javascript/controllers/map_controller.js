@@ -34,19 +34,22 @@ export default class extends Controller {
           }
         }
       });
-      this.map.addLayer({
-        'id': 'route',
-        'type': 'line',
-        'source': 'route',
-        'layout': {
+      console.log(typeof window.location.pathname);
+if (window.location.pathname.includes("trips")) {
+  this.map.addLayer({
+      'id': 'route',
+      'type': 'line',
+      'source': 'route',
+      'layout': {
           'line-join': 'round',
           'line-cap': 'round'
         },
         'paint': {
-          'line-color': '#D9D838',
-          'line-width': 8
-        }
-      });
+            'line-color': '#D9D838',
+            'line-width': 8
+          }
+        });
+      }
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
