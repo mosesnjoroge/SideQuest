@@ -14,12 +14,6 @@ class SideQuestsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
       }
     end
-    @markers = @locations.geocoded.map do |location|
-      {
-        lat: location.latitude,
-        lng: location.longitude,
-      }
-    end
   end
 
   def show
