@@ -29,16 +29,18 @@
 }
 
 .knight-logo {
-  width: 64px;
-  height: 64px;
-  justify-content: center;
-  align-items: center;
-
+  width: 34px;
+  height: 35px;
+  top:8px;
 }
 
 .avatar-hex {
   width: 48px;
   height: 48px;
   background: url(assets/images/sqs/Avataravatar-hex.png)
+}
 
+.navbar-brand {
+  position: fixed;
+  left: 188px;
 }

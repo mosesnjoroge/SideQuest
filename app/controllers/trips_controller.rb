@@ -24,6 +24,8 @@ class TripsController < ApplicationController
       image_url: helpers.asset_url("yellow.png") }
     end
     @sidequests2 = SideQuest.first(6)
+    # query mapbox directions api
+    # https://api.mapbox.com/directions/v5/mapbox/driving/{latStart},{lonStart};{latEnd},{lonEnd}?access_token=ENV['MAPBOX_API_KEY']
   end
 
   def new
