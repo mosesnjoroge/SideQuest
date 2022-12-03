@@ -22,7 +22,8 @@ export default class extends Controller {
             'type': 'LineString',
             'coordinates': [
               [-73.61313135191904, 45.50002155],
-              [-74.5646908, 45.4490024],
+              [-74.60, 45.46],
+              [-74.63, 45.55],
               [-75.69881245158095, 45.429526300000006]
             ]
           }
@@ -55,12 +56,26 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-       const customMarker = document.createElement('div')
-       customMarker.className = "marker"
-      new mapboxgl.Marker()
+      const customMarker = document.createElement('div')
+      if (marker.is_start_end === true) {
+        customMarker.className = "marker"
+        customMarker.style.backgroundImage = `url('${marker.image_url}')`
+        customMarker.style.backgroundSize = "cover"
+        customMarker.style.backgroundRepeat = "no-repeat"
+        customMarker.style.width = "27px"
+        customMarker.style.height = "41px"
+        customMarker.classList.add('start_end_marker')
+        new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map);
+      } else {
+        customMarker.className = "marker"
+        new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(this.map);
+      }
     })
   }
 }

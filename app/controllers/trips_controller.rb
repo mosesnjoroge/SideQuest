@@ -9,6 +9,7 @@ class TripsController < ApplicationController
 
   def show
     @sidequests = SideQuest.all
+    @locations = Location.limit(2)
     @markers = @sidequests.geocoded.map do |sidequest|
 
       {
@@ -16,6 +17,11 @@ class TripsController < ApplicationController
         lng: sidequest.longitude,
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
       }
+    end
+    @locations.geocoded.each do |location|
+      @markers << { lat: location.latitude, lng: location.longitude, is_start_end: true,
+      info_window: render_to_string(partial: "info_location", locals: {location: location}),
+      image_url: helpers.asset_url("red.png") }
     end
     @sidequests2 = SideQuest.first(6)
   end
