@@ -1,10 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container">
     <% if user_signed_in? %>
-      <div class = 'back-btn'>
-        <%= link_to "",new_side_quest_path, class:"fa-solid fa-chevron-left" %>
-      </div>
-
+      <% if current_page?(controller: 'trips', action: 'new') == false %>
+        <div class = 'back-btn'>
+          <%= link_to "",new_side_quest_path, class:"fa-solid fa-chevron-left" %>
+        </div>
+      <% end %>
       <div class = "navbar-brand">
         <%= image_tag "https://cdn-icons-png.flaticon.com/512/2863/2863130.png" %>
       </div>
