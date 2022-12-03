@@ -29,11 +29,13 @@
 }
 
 .knight-logo {
-  width: 64px;
-  height: 64px;
+  display: flex;
   justify-content: center;
   align-items: center;
-
+  left: 188px;
+  width: 34px;
+  height: 35px;
+  top:8px;
 }
 
 .avatar-hex {
