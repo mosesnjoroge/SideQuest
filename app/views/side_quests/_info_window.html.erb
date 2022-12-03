@@ -5,4 +5,5 @@
     <p><%= sidequest.description%></p>
   </small>
   <%= link_to "Explore", side_quest_path(sidequest), class: "btn-flat"  %>
+  <%= link_to "Add Stop",  new_side_quest_stop_path(sidequest), class: "btn-flat"  %>
 </div>

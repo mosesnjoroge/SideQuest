@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :side_quests do
     resources :reviews, only: %i[index new create]
+    resources :stops
   end
   resources :trips
   resources :locations, only: [:new, :create]
