@@ -1,5 +1,6 @@
 class CategoryController < ApplicationController
   before_action :set_sidequest, only: %i[index]
+  before_action :set_category, except: %i[new create]
 
   def index
     if params[:query].present?
@@ -28,13 +29,9 @@ class CategoryController < ApplicationController
     end
   end
 
-  def edit
+  def edit; end
 
-  end
-
-  def update
-
-  end
+  def update; end
 
   def destroy
     @category.destroy
@@ -48,6 +45,10 @@ class CategoryController < ApplicationController
 
   def set_sidequest
     @side_quest = SideQuest.find(params[:id])
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 
 end
