@@ -85,6 +85,18 @@ instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map);
+      } else if (marker.stop_is_in_trip) {
+        customMarker.className = "marker"
+        customMarker.style.backgroundImage = `url('${marker.image_url}')`
+        customMarker.style.backgroundSize = "cover"
+        customMarker.style.backgroundRepeat = "no-repeat"
+        customMarker.style.width = "27px"
+        customMarker.style.height = "41px"
+        customMarker.classList.add('start_end_marker')
+        new mapboxgl.Marker(customMarker)
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(this.map);
       } else {
         customMarker.className = "marker"
         new mapboxgl.Marker()
