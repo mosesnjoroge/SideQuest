@@ -1,18 +1,33 @@
 <div class="container">
-  <div class="col-12 offset-sm-3">
-    <small class = 'text-center'>
-      <h2>Post a Sidequest</h2>
-    </small>
-    <%= simple_form_for  sidequest do |f| %>
-      <%= f.input :name, placeholder: 'tim hortons' %>
-      <%= f.input :address, placeholder: '1256 wilson' %>
-      <%= f.input :category, placeholder: 'type of sidequest' %>
-      <%= f.input :description, :as => :text, placeholder: 'Amazing experience' %>
-      <%= f.input :photo, as: :file, direct_upload: true %>
-      <%#= f.input :price, placeholder: '5 CAD' %>
-      <div class = 'text-center'>
-        <%= f.submit class: 'btn-flat' %>
-      </div>
-    <% end %>
-  </div>
+  <small class = 'text-center'>
+    <h2>Post a Sidequest</h2>
+  </small>
+  <%= simple_form_for  sidequest do |f| %>
+    <div class = 'name-icon'>
+      <i class="fa-solid fa-user"></i>
+    </div>
+    <%= f.input :name, placeholder: 'tim hortons' %>
+
+    <div class = 'address-icon'>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <%= f.input :address, placeholder: '1256 wilson' %>
+
+    <div class = 'category-icon'>
+      <i class="fa-sharp fa-solid fa-feather"></i>
+    </div>
+    <%= f.input :category, placeholder: 'type of sidequest' %>
+
+    <div class = 'description-icon'>
+      <i class="fa-sharp fa-solid fa-feather"></i>
+    </div>
+    <%= f.input :description, :as => :text, placeholder: 'Amazing experience' %>
+
+    <%= f.input :photo, as: :file, direct_upload: true %>
+    <%#= f.input :price, placeholder: '5 CAD' %>
+
+    <div class = 'text-center'>
+      <%= f.submit class: 'btn-flat' %>
+    </div>
+  <% end %>
 </div>
