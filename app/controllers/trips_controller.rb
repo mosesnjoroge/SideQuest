@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     @locations.geocoded.each do |location|
       @markers << { lat: location.latitude, lng: location.longitude, is_start_end: true,
       info_window: render_to_string(partial: "info_location", locals: {location: location}),
-      image_url: helpers.asset_url("red.png") }
+      image_url: helpers.asset_url("yellow.png") }
     end
     @sidequests2 = SideQuest.first(6)
   end
