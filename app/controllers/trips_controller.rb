@@ -66,4 +66,8 @@ class TripsController < ApplicationController
   def set_sidequest
     @sidequest = SideQuest.find(params[:id])
   end
+
+  def set_category
+    @category = Category.find(side_quest_id: params[:id])
+  end
 end

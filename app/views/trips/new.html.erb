@@ -31,7 +31,8 @@
 
       <div>
         <%= form.fields_for :category do |category_subform| %>
-          <%=category_subform.text_field :category  %>
+          <%=category_subform.text_field :query,
+            params[:query]%>
         <%end%>
       </div>
 

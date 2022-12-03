@@ -1,8 +1,12 @@
 class CategoryController < ApplicationController
-  before_action :set_trip
+  before_action :set_sidequest, only: %i[index]
 
   def index
-    @categorys = Category.all
+    if params[:query].present?
+      @categories = Category.where(name: params[:query])
+    else
+      @categories = Category.all
+    end
   end
 
   def show
@@ -14,7 +18,8 @@ class CategoryController < ApplicationController
   end
 
   def create
-    @category = Category.new
+    @category = Category.new(category_params)
+    @category.side_quest = @sidequest
     @category.user = current_user
     if @category.save
       redirect_to trip_path(@trip)
@@ -32,17 +37,17 @@ class CategoryController < ApplicationController
   end
 
   def destroy
-
+    @category.destroy
   end
 
   private
 
   def category_params
-
+    params.require(:category).permit(:name)
   end
 
-  def set_trip
-    @trip = Trip.find(params[:id])
+  def set_sidequest
+    @side_quest = SideQuest.find(params[:id])
   end
 
 end
