@@ -6,8 +6,18 @@ export default class extends Controller {
     apiKey: String,
     markers: Array
   }
-  connect() {
+  async connect() {
+    const start = [-73.61313135191904, 45.50002155]
+    const end = [-75.69881245158095, 45.429526300000006]
+
     mapboxgl.accessToken = this.apiKeyValue
+    const query = await fetch(
+      `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`,
+      { method: 'GET' }
+    );
+    const json = await query.json();
+    const data = json.routes[0];
+    const route = data.geometry.coordinates;
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v11"
@@ -20,31 +30,34 @@ export default class extends Controller {
           'properties': {},
           'geometry': {
             'type': 'LineString',
-            'coordinates': [
-              [-73.61313135191904, 45.50002155],
-              [-74.60, 45.46],
-              [-74.63, 45.55],
-              [-75.69881245158095, 45.429526300000006]
-            ]
+            'coordinates': route
           }
         }
       });
       this.map.addLayer({
-      'id': 'route',
-      'type': 'line',
-      'source': 'route',
-      'layout': {
-      'line-join': 'round',
-      'line-cap': 'round'
-      },
-      'paint': {
-      'line-color': '#000',
-      'line-width': 8
-      }
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-color': '#D9D838',
+          'line-width': 8
+        }
       });
-      });
+    });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+const instructions = document.getElementById('instructions');
+const steps = data.legs[0].steps;
+
+let tripInstructions = '';
+instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+  data.duration / 60
+)} min 🚙 </strong></p>`;
+
   }
 
   #fitMapToMarkers() {
