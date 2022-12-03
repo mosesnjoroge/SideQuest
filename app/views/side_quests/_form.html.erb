@@ -24,9 +24,9 @@
     <%= f.input :description, :as => :text, placeholder: 'Amazing experience' %>
 
     <%= f.input :photo, as: :file, direct_upload: true %>
-    <%#= f.input :price, placeholder: '5 CAD' %>
+    <%= f.input :price, placeholder: '5 CAD' %>
 
-    <div class = 'text-center'>
+    <div class = 'text-center pt-4'>
       <%= f.submit class: 'btn-flat' %>
     </div>
   <% end %>
