@@ -26,11 +26,18 @@
     <%= simple_form_for @trip do |f| %>
       <div class = "container">
         <%= f.input :start_location, :label => "Start Point" %>
-        <%= f.input :end_location, :label =>  "End Point"%>
+        <%= f.input :end_location, :label =>  "Destination"%>
       </div>
+
+      <div>
+        <%= form.fields_for :category do |category_subform| %>
+          <%=category_subform.text_field :category  %>
+        <%end%>
+      </div>
+
     <div class = "footer-info text-center">
       <div class = "btn">
-        <%= f.submit class: "btn btn-link foottext"%>
+        <%= f.submit 'Search',class: "btn btn-link foottext"%>
       </div>
     </div>
   <%end %>
