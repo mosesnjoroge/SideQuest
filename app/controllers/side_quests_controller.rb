@@ -7,17 +7,10 @@ class SideQuestsController < ApplicationController
   def index
     @sidequests = SideQuest.all
     @markers = @sidequests.geocoded.map do |sidequest|
-
       {
         lat: sidequest.latitude,
         lng: sidequest.longitude,
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
-      }
-    end
-    @markers = @locations.geocoded.map do |location|
-      {
-        lat: location.latitude,
-        lng: location.longitude,
       }
     end
   end
