@@ -22,3 +22,15 @@
   background-color: $dark-blue;
   color: $light-blue;
 }
+
+.trip-origin-address-icon {
+  position: absolute;
+  right: 30px;
+  top: 356px;
+}
+
+.trip-destination-address-icon{
+  position: absolute;
+  right: 30px;
+  bottom: 280px;
+}

@@ -4,41 +4,25 @@
 
 <%= simple_form_for @trip do |f| %>
       <div class = "container">
-        <%= f.input :start_location, :label => "Start Point" %>
-        <%= f.input :end_location, :label =>  "End Point"%>
+        <div class = 'trip-origin-address-icon'>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <%= f.input :start_location, :label => "Orgin" %>
+        <div class = 'trip-destination-address-icon'>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <%= f.input :end_location, :label =>  "Destination"%>
+      </div>
+
+      <div class = 'container'>
+        <%# <div class = 'trips-description-icon'> %>
+          <%# <i class="fa-sharp fa-solid fa-feather"></i> %>
+        <%# </div> %>
+        <%= f.input :categories, collection: [ 'Parks', 'Off-Road Activities', 'Wine tours' ] %>
       </div>
     <div class = "footer-info text-center">
       <div class = "btn">
-        <%= f.submit class: "btn btn-link foottext"%>
+        <%= f.button :submit, 'Search', class: "btn btn-link foottext"%>
       </div>
     </div>
-  <%end %>
-
-
-
-
-
-
-
-
-
-<%# <div class="preferences-form"> %>
-  <%#= simple_form_for category  do |f| %>
-    <%# <div class = "container"> %>
-      <%#= form.fields_for :sidequest :trip do |trip_subform| %>
-        <%#=trip_subform.input :start_location, :label => "Start Point" %>
-        <%#= trip_subform.input :end_location, :label =>  "Destination" %>
-      <%#end%>
-    <%# </div> %>
-
-    <%# <div> %>
-      <%#=f.input :category,:query, params[:query]%>
-    <%# </div> %>
-
-    <%# <div class = "footer-info text-center"> %>
-      <%# <div class = "btn"> %>
-        <%#= f.submit 'Search',class: "btn btn-link foottext"%>
-      <%# </div> %>
-    <%# </div> %>
-  <%#end %>
-<%# </div> %>
+<%end %>
