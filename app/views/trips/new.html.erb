@@ -1,21 +1,25 @@
+<div class = 'sidequest-image-trip-page'>
+
+</div>
+
 
 <div class="preferences-form">
-  <%= simple_form_for category  do |f| %>
+  <%#= simple_form_for category  do |f| %>
     <div class = "container">
-      <%= form.fields_for :sidequest :trip do |trip_subform| %>
-        <%=trip_subform.input :start_location, :label => "Start Point" %>
-        <%= trip_subform.input :end_location, :label =>  "Destination" %>
-      <%end%>
+      <%#= form.fields_for :sidequest :trip do |trip_subform| %>
+        <%#=trip_subform.input :start_location, :label => "Start Point" %>
+        <%#= trip_subform.input :end_location, :label =>  "Destination" %>
+      <%#end%>
     </div>
 
     <div>
-      <%=f.input :category,:query, params[:query]%>
+      <%#=f.input :category,:query, params[:query]%>
     </div>
 
     <div class = "footer-info text-center">
       <div class = "btn">
-        <%= f.submit 'Search',class: "btn btn-link foottext"%>
+        <%#= f.submit 'Search',class: "btn btn-link foottext"%>
       </div>
     </div>
-  <%end %>
+  <%#end %>
 </div>
