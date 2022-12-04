@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show update destroy]
-  # before_action :set_sidequest, only: %i[index]
+  #before_action :set_sidequest, only: %i[index]
 
   def index
     @trips = current_user.trips
@@ -28,6 +28,7 @@ class TripsController < ApplicationController
   end
 
   def new
+    @sidequest = SideQuest.first
     @trip = Trip.new
     #@category = Trip.new
     #@location = Location.new
