@@ -34,19 +34,22 @@ export default class extends Controller {
           }
         }
       });
-      this.map.addLayer({
-        'id': 'route',
-        'type': 'line',
-        'source': 'route',
-        'layout': {
+      console.log(typeof window.location.pathname);
+if (window.location.pathname.includes("trips")) {
+  this.map.addLayer({
+      'id': 'route',
+      'type': 'line',
+      'source': 'route',
+      'layout': {
           'line-join': 'round',
           'line-cap': 'round'
         },
         'paint': {
-          'line-color': '#D9D838',
-          'line-width': 8
-        }
-      });
+            'line-color': '#D9D838',
+            'line-width': 8
+          }
+        });
+      }
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
@@ -71,6 +74,18 @@ instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customMarker = document.createElement('div')
       if (marker.is_start_end === true) {
+        customMarker.className = "marker"
+        customMarker.style.backgroundImage = `url('${marker.image_url}')`
+        customMarker.style.backgroundSize = "cover"
+        customMarker.style.backgroundRepeat = "no-repeat"
+        customMarker.style.width = "27px"
+        customMarker.style.height = "41px"
+        customMarker.classList.add('start_end_marker')
+        new mapboxgl.Marker(customMarker)
+        .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
+        .addTo(this.map);
+      } else if (marker.stop_is_in_trip) {
         customMarker.className = "marker"
         customMarker.style.backgroundImage = `url('${marker.image_url}')`
         customMarker.style.backgroundSize = "cover"
