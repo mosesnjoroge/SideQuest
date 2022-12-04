@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show update destroy]
-  # before_action :set_sidequest, only: %i[index]
+  #before_action :set_sidequest, only: %i[index]
 
   def index
     @trips = current_user.trips
@@ -28,6 +28,7 @@ class TripsController < ApplicationController
   end
 
   def new
+    @sidequest = SideQuest.first
     @trip = Trip.new
     #@category = Trip.new
     #@location = Location.new
@@ -55,7 +56,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit()
+    params.require(:trip).permit(:start_location, :end_location, :categories)
   end
 
   def set_trip
@@ -64,5 +65,9 @@ class TripsController < ApplicationController
 
   def set_sidequest
     @sidequest = SideQuest.find(params[:id])
+  end
+
+  def set_category
+    @category = Category.find(side_quest_id: params[:id])
   end
 end
