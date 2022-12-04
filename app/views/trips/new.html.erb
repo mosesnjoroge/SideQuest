@@ -2,24 +2,43 @@
 
 </div>
 
+<%= simple_form_for @trip do |f| %>
+      <div class = "container">
+        <%= f.input :start_location, :label => "Start Point" %>
+        <%= f.input :end_location, :label =>  "End Point"%>
+      </div>
+    <div class = "footer-info text-center">
+      <div class = "btn">
+        <%= f.submit class: "btn btn-link foottext"%>
+      </div>
+    </div>
+  <%end %>
 
-<div class="preferences-form">
+
+
+
+
+
+
+
+
+<%# <div class="preferences-form"> %>
   <%#= simple_form_for category  do |f| %>
-    <div class = "container">
+    <%# <div class = "container"> %>
       <%#= form.fields_for :sidequest :trip do |trip_subform| %>
         <%#=trip_subform.input :start_location, :label => "Start Point" %>
         <%#= trip_subform.input :end_location, :label =>  "Destination" %>
       <%#end%>
-    </div>
+    <%# </div> %>
 
-    <div>
+    <%# <div> %>
       <%#=f.input :category,:query, params[:query]%>
-    </div>
+    <%# </div> %>
 
-    <div class = "footer-info text-center">
-      <div class = "btn">
+    <%# <div class = "footer-info text-center"> %>
+      <%# <div class = "btn"> %>
         <%#= f.submit 'Search',class: "btn btn-link foottext"%>
-      </div>
-    </div>
+      <%# </div> %>
+    <%# </div> %>
   <%#end %>
-</div>
+<%# </div> %>
