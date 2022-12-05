@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:photo])
     devise_parameter_sanitizer.permit(:account_update, keys: [:photo])
   end
+
+  def add_back_links
+    @sidequest = SideQuest.all
+    @trip = Trip.all
+    @review = Review.all
+  end
 end

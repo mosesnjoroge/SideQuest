@@ -2,9 +2,28 @@
   <div class="container">
     <% if user_signed_in? %>
       <div class = 'back-btn'>
-        <%= link_to "",new_side_quest_path, class:"fa-solid fa-chevron-left" %>
+        <%= link_to "back",new_trip_path, class:"fa-solid fa-chevron-left" %>
       </div>
-
+      <% if !current_page?('trips/new') || current_page?('pages/home')%>
+        <div class = 'back-btn'>
+          <%if current_page?('trips/:id')  %>
+            <%= link_to new_trip_path, class:"fa-solid fa-chevron-left" %>
+          <% elsif current_page?(controller: 'side_quests', action: 'show') %>
+            <%= link_to trips_path(@trip), class:"fa-solid fa-chevron-left" %>
+          <% elsif current_page?(controller: 'reviews', action: 'index') %>
+            <%# instance variable required %>
+            <%= link_to side_quest_path, class:"fa-solid fa-chevron-left" %>
+          <% elsif current_page?(controller: 'reviews', action: 'new') %>
+            <%# instance variable required %>
+            <%= link_to side_quest_path, class:"fa-solid fa-chevron-left" %>
+          <% else %>
+            <%#=link_to :back, class:"fa-solid fa-chevron-left" %>
+          <% end %>
+        </div>
+      <% else %>
+         <div>
+         </div>
+      <% end %>
       <div class = "navbar-brand">
         <%= image_tag "https://cdn-icons-png.flaticon.com/512/2863/2863130.png" %>
       </div>
