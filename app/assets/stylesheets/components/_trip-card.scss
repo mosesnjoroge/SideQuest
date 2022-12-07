@@ -9,9 +9,13 @@
 
 .trip-title {
   display: flex;
-  justify-content: center;
+  font-family: "Josefin Sans";
   background-color: $dark-blue;
   color: $light-blue;
+}
+
+.placename {
+  margin-left: 12px;
 }
 
 .trip-eta-cards{
@@ -33,4 +37,10 @@
   position: absolute;
   right: 30px;
   bottom: 280px;
+}
+
+.trip-info a{
+  text-decoration: none;
+  font-family: "Josefin Sans";
+  color: #4C6085;
 }
