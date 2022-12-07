@@ -126,4 +126,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_214555) do
   add_foreign_key "stops", "side_quests"
   add_foreign_key "stops", "trips"
   add_foreign_key "trips", "users"
+
 end

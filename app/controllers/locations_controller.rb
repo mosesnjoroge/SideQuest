@@ -20,6 +20,7 @@ class LocationsController < ApplicationController
     #else
      #redirect_to root_path, notice: "Location details were not correct"
     #end
+    #vo
   end
 
   def destroy

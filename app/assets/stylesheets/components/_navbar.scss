@@ -30,3 +30,14 @@
   height: 48px;
   background: url(assets/images/sqs/Avataravatar-hex.png)
 }
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 48px;
+}
+
+.fa-chevron-left {
+  text-decoration: none;
+}
