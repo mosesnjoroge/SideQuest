@@ -2,13 +2,14 @@
   <div class = "navbar-sidequests" >
     <% if user_signed_in? %>
       <% unless current_page?('/trips/new') || current_page?('/')%>
-        <%= link_to :back do %>
-          <i class="fa-solid fa-chevron-left"></i>
-        <% end %>
-
+        <div class = 'back-btn'>
+          <%= link_to :back do %>
+            <i class="fa-solid fa-chevron-left"></i>
+          <% end %>
+        </div>
       <% else %>
         <div>
-          <div class = 'back-btn'>
+          <div>
             <i class="fa-solid fa-chevron-left d-none"></i>
           </div>
         </div>
