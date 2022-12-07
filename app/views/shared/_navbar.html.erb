@@ -1,92 +1,20 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container">
-    <% if user_signed_in? %>
-      <div class = 'back-btn'>
-        <%= link_to "back",new_trip_path, class:"fa-solid fa-chevron-left" %>
-      </div>
-      <% if !current_page?('trips/new') || current_page?('pages/home')%>
-        <div class = 'back-btn'>
-          <%if current_page?('trips/:id')  %>
-            <%= link_to new_trip_path, class:"fa-solid fa-chevron-left" %>
-          <% elsif current_page?(controller: 'side_quests', action: 'show') %>
-            <%= link_to trips_path(@trip), class:"fa-solid fa-chevron-left" %>
-          <% elsif current_page?(controller: 'reviews', action: 'index') %>
-            <%# instance variable required %>
-            <%= link_to side_quest_path, class:"fa-solid fa-chevron-left" %>
-          <% elsif current_page?(controller: 'reviews', action: 'new') %>
-            <%# instance variable required %>
-            <%= link_to side_quest_path, class:"fa-solid fa-chevron-left" %>
-          <% else %>
-            <%#=link_to :back, class:"fa-solid fa-chevron-left" %>
-          <% end %>
-        </div>
-      <% else %>
-         <div>
-         </div>
-      <% end %>
-      <div class = "navbar-brand">
-        <%= image_tag "https://cdn-icons-png.flaticon.com/512/2863/2863130.png" %>
-      </div>
-
-      <div class = "avatar-dropdown">
-        <div class="nav-item dropdown">
-          <%= image_tag "https://cdn-icons-png.flaticon.com/512/4128/4128176.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to "Home", new_trip_path, class: "dropdown-item" %>
-            <%= link_to "Create a sidequests", new_side_quest_path, class: "dropdown-item" %>
-            <%= link_to "my sidequests", side_quests_path, class: "dropdown-item" %>
-            <%= link_to "my trips", trips_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-          </div>
-        </div>
-      </div>
-    <% else %>
-      <div class = "knight-logo">
-        <%= link_to "#", class: "navbar-brand" do %>
-          <%= image_tag "https://cdn-icons-png.flaticon.com/512/2863/2863130.png" %>
-        <% end %>
-      </div>
-
-
-      <div class="nav-item">
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-
-
-
-<% comment do %>
 <div class="container">
   <div class = "navbar-sidequests" >
     <% if user_signed_in? %>
-      <% unless current_page?(controller: 'trips', action: 'new') || current_page?(controller: 'pages', action: 'home')%>
-        <div class = 'back-btn'>
-          <%if current_page?(controller: 'trips', action: 'show')  %>
-            <%= link_to new_trip_path, class:"fa-solid fa-chevron-left" %>
-          <% elsif current_page?(controller: 'side_quests', action: 'show') %>
-            <%# instance variable required %>
-            <%#= link_to trip_path, class:"fa-solid fa-chevron-left" %>
-          <% elsif current_page?(controller: 'reviews', action: 'index') %>
-            <%# instance variable required %>
-            <%#= link_to sidequest_path, class:"fa-solid fa-chevron-left" %>
-          <% elsif current_page?(controller: 'reviews', action: 'new') %>
-            <%# instance variable required %>
-            <%#= link_to sidequest_path, class:"fa-solid fa-chevron-left" %>
-          <% else %>
-            <%=link_to :back, class:"fa-solid fa-chevron-left" %>
-          <% end %>
-        </div>
+      <% unless current_page?('/trips/new') || current_page?('/')%>
+        <%= link_to :back do %>
+          <i class="fa-solid fa-chevron-left"></i>
+        <% end %>
+
       <% else %>
+        <div>
+          <div class = 'back-btn'>
+            <i class="fa-solid fa-chevron-left d-none"></i>
+          </div>
+        </div>
         <div>
         </div>
       <% end %>
-
       <div class = "navbar-brand">
         <%= image_tag "https://cdn-icons-png.flaticon.com/512/2863/2863130.png" %>
       </div>
@@ -95,7 +23,7 @@
         <div class="nav-item dropdown">
           <%= image_tag "https://cdn-icons-png.flaticon.com/512/4128/4128176.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to "Home", new_trip_path, class: "dropdown-item" %>
+            <%= link_to "Home", root_path, class: "dropdown-item" %>
             <%= link_to "Create a sidequests", new_side_quest_path, class: "dropdown-item" %>
             <%= link_to "my sidequests", side_quests_path, class: "dropdown-item" %>
             <%= link_to "my trips", trips_path, class: "dropdown-item" %>
@@ -109,11 +37,9 @@
           <%= image_tag "https://cdn-icons-png.flaticon.com/512/2863/2863130.png" %>
         <% end %>
       </div>
-
       <div class="nav-item">
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
       </div>
     <% end %>
   </div>
 </div>
-<% end %>
