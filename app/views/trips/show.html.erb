@@ -11,8 +11,8 @@
     <div class = "trip-title">
       <p><i class="fa-solid fa-star">
       </i>
-        <div>
-          Start Point:
+        <div class="placename">
+          <strong>Start:</strong>
           <%= @trip.start_location.address%>
         </div>
       </p>
@@ -29,8 +29,8 @@
     <div class = "trip-title">
       <p><i class="fa-solid fa-star">
         </i>
-        <div>
-          End Point:
+        <div class="placename">
+          <strong>End:</strong>
           <%= @trip.end_location.address%>
         </div>
       </p>
