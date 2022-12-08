@@ -25,24 +25,33 @@
   </div>
 </div>
 
-<%= simple_form_for @trip do |f| %>
-      <div class = "container">
-        <div class = 'trip-origin-address-icon'>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <%= f.input :start_location, :label => "Origin" %>
-        <div class = 'trip-destination-address-icon'>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <%= f.input :end_location, :label =>  "Destination"%>
-      </div>
 
-      <div class = 'container'>
-        <%= f.input :categories, collection: [ 'Parks', 'Off-Road Activities', 'Wine tours' ] %>
+
+
+
+
+
+
+<% comment do %>
+  <%= simple_form_for @trip do |f| %>
+        <div class = "container">
+          <div class = 'trip-origin-address-icon'>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <%= f.input :start_location, :label => "Origin" %>
+          <div class = 'trip-destination-address-icon'>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <%= f.input :end_location, :label =>  "Destination"%>
+        </div>
+
+        <div class = 'container'>
+          <%= f.input :categories, collection: [ 'Parks', 'Off-Road Activities', 'Wine tours' ] %>
+        </div>
+      <div class = "footer-info text-center">
+        <div class = "btn">
+          <%= f.button :submit, 'Search', class: "btn btn-link foottext"%>
+        </div>
       </div>
-    <div class = "footer-info text-center">
-      <div class = "btn">
-        <%= f.button :submit, 'Search', class: "btn btn-link foottext"%>
-      </div>
-    </div>
-<%end %>
+  <%end %>
+<% end %>
