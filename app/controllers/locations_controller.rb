@@ -3,6 +3,7 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all
+    raise
   end
 
   def new
@@ -10,6 +11,18 @@ class LocationsController < ApplicationController
   end
 
   def create
+    # stringify coords for url
+start_coords = params[:location].join('%2C')
+end_coords = @params[:place1].join('%2C')
+coordinates = [start_coords, end_coords].join('%3B')
+
+mapbox_api_url = URI("https://api.mapbox.com/directions/v5/mapbox/driving/#{coordinates}?alternatives=false&geometries=geojson&language=en&overview=full&steps=false&access_token=#{ENV['MAPBOX_API_KEY']}")
+mapbox_api_response = Net::HTTP.get_response(mapbox_api_url).body
+mapbox_api_json = JSON.parse(mapbox_api_response)
+route_info = mapbox_api_json['routes'][0]
+
+pp route_info
+
     #@location = Location.create(set_params)
     #@location.user = current_user
     #if @location.save!

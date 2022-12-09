@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-
 // Connects to data-controller="map"
 export default class extends Controller {
   static values = {
@@ -7,6 +6,7 @@ export default class extends Controller {
     markers: Array
   }
   async connect() {
+    // Get actual start and end from the user's trip search
     const start = [-73.61313135191904, 45.50002155]
     const end = [-75.69881245158095, 45.429526300000006]
 
@@ -34,17 +34,16 @@ export default class extends Controller {
           }
         }
       });
-      console.log(typeof window.location.pathname);
-if (window.location.pathname.includes("trips")) {
-  this.map.addLayer({
-      'id': 'route',
-      'type': 'line',
-      'source': 'route',
-      'layout': {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        'paint': {
+      if (window.location.pathname.includes("trips")) {
+        this.map.addLayer({
+          'id': 'route',
+          'type': 'line',
+          'source': 'route',
+          'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          'paint': {
             'line-color': '#D9D838',
             'line-width': 8
           }
@@ -53,14 +52,14 @@ if (window.location.pathname.includes("trips")) {
     });
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-const instructions = document.getElementById('instructions');
-const steps = data.legs[0].steps;
 
-let tripInstructions = '';
-instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-  data.duration / 60
-)} min 🚙 </strong></p>`;
+    const instructions = document.getElementById('instructions');
+    const steps = data.legs[0].steps;
 
+    let tripInstructions = '';
+    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+      data.duration / 60
+    )} min 🚙 </strong></p>`;
   }
 
   #fitMapToMarkers() {
