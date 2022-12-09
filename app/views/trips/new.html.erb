@@ -27,14 +27,18 @@
 
 <%= simple_form_for @trip do |f| %>
       <div class = "container">
-        <div class = 'trip-origin-address-icon'>
+        <div class="field">
+
           <i class="fa-solid fa-magnifying-glass"></i>
+
+          <%= f.input :start_location, :label => "Origin" %>
         </div>
-        <%= f.input :start_location, :label => "Origin" %>
-        <div class = 'trip-destination-address-icon'>
+        <div class="field">
+
           <i class="fa-solid fa-magnifying-glass"></i>
+
+          <%= f.input :end_location, :label =>  "Destination"%>
         </div>
-        <%= f.input :end_location, :label =>  "Destination"%>
       </div>
 
       <div class = 'container'>
@@ -42,7 +46,7 @@
       </div>
     <div class = "footer-info text-center">
       <div class = "btn">
-        <%= f.button :submit, 'Search', class: "btn btn-link foottext"%>
+        <%= f.button :submit, 'Search', class: "btn footbutton"%>
       </div>
     </div>
 <%end %>

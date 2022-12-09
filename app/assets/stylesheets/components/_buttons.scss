@@ -1,4 +1,5 @@
 .btn-flat {
+  font-family: "Josefin Sans";
   color: $light-blue!important;
   border: 1px solid $light-blue;
   padding: 8px 24px;
@@ -13,12 +14,14 @@
   color:$light-blue;
 }
 
-.btn-link {
-  text-decoration: none;
-  color: #17285B;
+.footbutton {
+  text-decoration: none !important;
+  color: #17285B !important;
   font-family: 'Josefin Sans';
   font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 24px;
+  font-weight: 400 !important;
+  font-size: 24px !important;
+  line-height: 24px !important;
+  text-transform: uppercase !important;
+
 }
