@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[show update destroy]
+  before_action :set_trip, only: %i[ show update destroy]
   #before_action :set_sidequest, only: %i[index]
 
   def index
@@ -73,11 +73,10 @@ class TripsController < ApplicationController
   end
 
   def set_trip
-    @trip = Trip.first
+    @trip = Trip.find(params[:id])
   end
 
   def set_sidequest
-    @sidequest = SideQuest.find(params[:id])
   end
 
   def set_category

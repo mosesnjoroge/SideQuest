@@ -30,8 +30,8 @@
         </li>
       <% end %>
       <div class = 'card'>
-        <%= link_to 'See More Reviews',side_quest_reviews_path(@sidequest), class: 'btn-flat' %>
-        <%= link_to 'Add a Review',new_side_quest_review_path(@sidequest), class: 'btn-flat' %>
+        <%= link_to 'See More Reviews',trip_side_quest_reviews_path(@trip, @sidequest, @reviews ), class: 'btn-flat' %>
+        <%= link_to 'Add a Review',new_trip_side_quest_review_path(@trip, @sidequest), class: 'btn-flat' %>
         <%#= link_to 'Back',trip_path(@trip), class: 'btn-flat' %>
       </div>
     </div>
@@ -42,7 +42,7 @@
       </small>
     </div>
     <div class = 'card text-center'>
-      <%= link_to 'See Reviews',side_quest_reviews_path(@sidequest), class: 'btn-flat' %>
+      <%= link_to 'See Reviews',trip_side_quest_reviews_path(@trip, @sidequest, @reviews ), class: 'btn-flat' %>
       <%#= link_to 'Back',trip_path(@trip2), class: 'btn-flat' %>
 
 

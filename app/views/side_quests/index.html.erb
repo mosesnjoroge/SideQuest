@@ -21,7 +21,7 @@
       <ul>
         <% @sidequests2.each do |sidequest|%>
           <li>
-            <%= link_to sidequest.name, trip_side_quests_path(sidequest.id)%>
+            <%= link_to sidequest.name, trip_side_quest_path(@trip, sidequest)%>
           </li>
         <%end %>
       </ul>

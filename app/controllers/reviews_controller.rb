@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :set_sidequest, only: %i[index create]
+  before_action :set_trip, only: %i[new create]
+
+
 
   def index
     @reviews = Review.all
@@ -17,7 +20,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.save
     if @sidequest.save
-      redirect_to side_quest_path(@sidequest, @review)
+      redirect_to trip_side_quest_path(@trip, @sidequest, @review)
     else
       redirecto_to new_side_quest_path
     end
@@ -31,6 +34,10 @@ class ReviewsController < ApplicationController
 
   def set_params
     params.require(:review).permit(:body, :rating)
+  end
+
+  def set_trip
+    @trip = Trip.find(params[:trip_id])
   end
 
 end

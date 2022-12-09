@@ -2,7 +2,7 @@ class SideQuestsController < ApplicationController
 
   before_action :set_sidequest, only: %i[show update destroy]
   before_action :set_review, only: %i[show]
-  before_action :set_trip, only: %i[index]
+  before_action :set_trip, only: %i[index show]
 
 
 
@@ -18,17 +18,21 @@ class SideQuestsController < ApplicationController
     #     image_url: helpers.asset_url("gray.png")
 
     #   }
-
-
-      @sidequests = SideQuest.all
+      # @sidequests = SideQuest.all
       @locations = Location.limit(2)
+
+      @sidequests = SideQuest.joins("JOIN stops ON stops.trip_id = #{Trip.first.id} AND stops.side_quest_id = side_quests.id")
       @markers = @sidequests.geocoded.map do |sidequest|
-           {
+        {
           lat: sidequest.latitude,
           lng: sidequest.longitude,
-          info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
+          info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
+          stop_is_in_trip: @sidequests.where(id: sidequest.id).size.positive?,
+          image_url: helpers.asset_url("gray.png")
+
         }
       end
+
       @locations.geocoded.each do |location|
         @markers << { lat: location.latitude, lng: location.longitude, is_start_end: true,
         info_window: render_to_string(partial: "info_location", locals: {location: location}),
@@ -86,7 +90,7 @@ class SideQuestsController < ApplicationController
   end
 
   def set_sidequest
-    @sidequest = SideQuest.find(params[:id])
+     @sidequest = SideQuest.find(params[:id])
   end
 
   def set_review
@@ -95,6 +99,6 @@ class SideQuestsController < ApplicationController
 
 
   def set_trip
-    @trip = Trip.last
+     @trip = Trip.find(params[:trip_id])
   end
 end
