@@ -6,7 +6,7 @@ class SideQuestsController < ApplicationController
 
   def index
     @sidequests = SideQuest.all
-    @stops = SideQuest.joins("JOIN stops ON stops.trip_id = 187 AND stops.side_quest_id = side_quests.id")
+    @stops = SideQuest.joins("JOIN stops ON stops.trip_id = #{Trip.first.id} AND stops.side_quest_id = side_quests.id")
     @markers = @sidequests.geocoded.map do |sidequest|
       {
         lat: sidequest.latitude,
@@ -14,6 +14,7 @@ class SideQuestsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
         stop_is_in_trip: @stops.where(id: sidequest.id).size.positive?,
         image_url: helpers.asset_url("gray.png")
+
       }
     end
   end
