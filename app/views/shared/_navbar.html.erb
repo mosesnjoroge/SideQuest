@@ -25,7 +25,7 @@
           <%= image_tag "https://cdn-icons-png.flaticon.com/512/4128/4128176.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%= link_to "Home", root_path, class: "dropdown-item" %>
-            <%= link_to "Create a sidequests", new_side_quest_path, class: "dropdown-item" %>
+            <%# <%= link_to "Create a sidequests", new_trip_new_side_quest_path, class: "dropdown-item" %> %>
             <%= link_to "My Last Trip", trips_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
           </div>
