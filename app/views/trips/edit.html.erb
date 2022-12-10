@@ -2,8 +2,9 @@
   <div style="width: 100%; height: 292px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     data-map-trip-value="<%= @trip.to_json %>"
-    data-map-api-key-value="<%=  ENV['MAPBOX_API_KEY'] %>" >
+  >
   </div>
 </div>
 <div id="instructions"></div>
@@ -14,7 +15,7 @@
       </i>
         <div>
           Start Point:
-          <%= @trip.start_geolocation['display_name']%>
+          <%= @trip.start_location%>
         </div>
       </p>
     </div>
@@ -32,32 +33,13 @@
         </i>
         <div>
           End Point:
-          <%= @trip.end_geolocation['display_name']%>
+          <%= @trip.end_location%>
         </div>
       </p>
     </div>
 </div>
-
-  <div class = "footer-info text-center">
-   <div class = "btn">
-      <%= link_to 'Navigate', trip_side_quests_path(@trip), class: "foottext" %>
-   </div>
- </div>
-<%comment do %>
-      <div class = "trip-title">
-        <p><i class="fa-solid fa-star">
-          </i>
-          <div class="placename">
-            <strong>End:</strong>
-            <%= @trip.end_location.address%>
-          </div>
-        </p>
-      </div>
+<div class = "footer-info text-center">
+  <div class = "btn">
+    <%= link_to 'Navigate', side_quests_path, class: "btn btn-link" %>
   </div>
-
-  <div class = "footer-info text-center">
-    <div class = "btn">
-      <%= link_to 'NAVIGATE', side_quests_path, class: "foottext" %>
-    </div>
-  </div>
-<% end %>
+</div>

@@ -6,14 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
 Review.delete_all
 SideQuest.delete_all
 Category.delete_all
 Trip.delete_all
 User.delete_all
-Location.delete_all
-
 
 ricardo = User.create({
   email: "ricardorgvillanueva@gmail.com",
@@ -25,21 +22,16 @@ alex = User.create({
   password:"Ricardo1234"
 })
 
-home = Location.create(name: "home", address: "4200 edouard montpetit")
-place1 = Location.create(name: "380 Sussex Dr, Ottawa, ON", address: "380 Sussex Dr, Ottawa, ON")
-place2 = Location.create(name: "380 Sussex Dr, Ottawa, ON", address: "380 Sussex Dr, Ottawa, ON")
-
-
 trip1 = Trip.create({
-  start_location: home,
-  end_location: place1,
+  start_location: "4200 edouard montpetit",
+  end_location: "380 Sussex Dr, Ottawa, ON",
   user: ricardo
 })
 
 
 trip2 = Trip.create({
-  start_location: home,
-  end_location: place2,
+  start_location: "4200 edouard montpetit",
+  end_location: "3515 Rue la Fontaine, Montreal, QC",
   user: alex
 })
 

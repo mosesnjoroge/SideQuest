@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'locations/index'
   devise_for :users
   root to: "pages#home"
 
@@ -10,5 +9,4 @@ Rails.application.routes.draw do
     end
   end
   resources :side_quests, only: %i[new create]
-  resources :locations, only: %i[new create]
 end
