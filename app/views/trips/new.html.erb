@@ -29,14 +29,16 @@
 </div>
 <%= simple_form_for @trip do |f| %>
   <div class = "container">
-    <div class = 'trip-origin-address-icon'>
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <div class="field">
+      <div class = 'trip-origin-address-icon'>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <%= f.input :start_location, :label => "Origin" %>
+      </div>
     </div>
-    <%= f.input :start_location, :label => "Origin" %>
-    <div class = 'trip-destination-address-icon'>
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <div class="field">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <%= f.input :end_location, :label =>  "Destination"%>
     </div>
-    <%= f.input :end_location, :label =>  "Destination"%>
   </div>
 
   <div class = 'container'>
