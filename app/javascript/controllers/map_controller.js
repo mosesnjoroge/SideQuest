@@ -35,7 +35,7 @@ export default class extends Controller {
         }
       });
       console.log(typeof window.location.pathname);
-      if (window.location.pathname.includes("trips")) {
+      if (window.location.pathname.includes("side_quests")) { // change here
         this.map.addLayer({
           'id': 'route',
           'type': 'line',
@@ -46,7 +46,7 @@ export default class extends Controller {
           },
           'paint': {
               'line-color': '#D9D838',
-              'line-width': 8
+              'line-width': 8 //Line is coming from this block
             }
           });
       }

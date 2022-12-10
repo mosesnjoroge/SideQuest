@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[show update destroy]
+  before_action :set_trip, only: %i[ show update destroy]
   #before_action :set_sidequest, only: %i[index]
 
   def index
@@ -8,24 +8,37 @@ class TripsController < ApplicationController
   end
 
   def show
+    # @sidequests = SideQuest.all
+    # @locations = Location.limit(2)
+    # @markers = @sidequests.geocoded.map do |sidequest|
+    #      {
+    #     lat: sidequest.latitude,
+    #     lng: sidequest.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
+    #   }
+    # end
+    # @locations.geocoded.each do |location|
+    #   @markers << { lat: location.latitude, lng: location.longitude, is_start_end: true,
+    #   info_window: render_to_string(partial: "info_location", locals: {location: location}),
+    #   image_url: helpers.asset_url("yellow.png") }
+    # end
+    # @sidequests2 = SideQuest.first(6)
+    # # query mapbox directions api
+    # # https://api.mapbox.com/directions/v5/mapbox/driving/{latStart},{lonStart};{latEnd},{lonEnd}?access_token=ENV['MAPBOX_API_KEY']
+
     @sidequests = SideQuest.all
-    @locations = Location.limit(2)
-    @markers = @sidequests.geocoded.map do |sidequest|
-         {
-        lat: sidequest.latitude,
-        lng: sidequest.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
-      }
+        @stops = SideQuest.joins("JOIN stops ON stops.trip_id = #{Trip.first.id} AND stops.side_quest_id = side_quests.id")
+        @markers = @sidequests.geocoded.map do |sidequest|
+          {
+            lat: sidequest.latitude,
+            lng: sidequest.longitude,
+            info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
+            stop_is_in_trip: @stops.where(id: sidequest.id).size.positive?,
+            image_url: helpers.asset_url("gray.png")
+
+          }
+      end
     end
-    @locations.geocoded.each do |location|
-      @markers << { lat: location.latitude, lng: location.longitude, is_start_end: true,
-      info_window: render_to_string(partial: "info_location", locals: {location: location}),
-      image_url: helpers.asset_url("yellow.png") }
-    end
-    @sidequests2 = SideQuest.first(6)
-    # query mapbox directions api
-    # https://api.mapbox.com/directions/v5/mapbox/driving/{latStart},{lonStart};{latEnd},{lonEnd}?access_token=ENV['MAPBOX_API_KEY']
-  end
 
   def new
     @sidequest = SideQuest.first
@@ -64,7 +77,6 @@ class TripsController < ApplicationController
   end
 
   def set_sidequest
-    @sidequest = SideQuest.find(params[:id])
   end
 
   def set_category
