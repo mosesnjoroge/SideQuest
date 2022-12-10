@@ -3,16 +3,16 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    trip: Object,
   }
   async connect() {
-    // Get actual start and end from the user's trip search
-    const start = [-73.61313135191904, 45.50002155]
-    const end = [-75.69881245158095, 45.429526300000006]
+    const start = this.tripValue.start_geolocation
+    const end = this.tripValue.end_geolocation
 
     mapboxgl.accessToken = this.apiKeyValue
     const query = await fetch(
-      `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`,
+      `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lon},${start.lat};${end.lon},${end.lat}?steps=true&geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`,
       { method: 'GET' }
     );
     const json = await query.json();
@@ -54,9 +54,6 @@ export default class extends Controller {
     this.#fitMapToMarkers()
 
     const instructions = document.getElementById('instructions');
-    const steps = data.legs[0].steps;
-
-    let tripInstructions = '';
     instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
       data.duration / 60
     )} min 🚙 </strong></p>`;
@@ -82,7 +79,6 @@ export default class extends Controller {
         customMarker.classList.add('start_end_marker')
         new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
         .addTo(this.map);
       } else if (marker.stop_is_in_trip) {
         customMarker.className = "marker"

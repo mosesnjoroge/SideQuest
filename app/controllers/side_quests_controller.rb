@@ -6,19 +6,20 @@ class SideQuestsController < ApplicationController
 
   def index
     @sidequests = SideQuest.all
-    @stops = SideQuest.joins("JOIN stops ON stops.trip_id = 187 AND stops.side_quest_id = side_quests.id")
     @markers = @sidequests.geocoded.map do |sidequest|
       {
         lat: sidequest.latitude,
         lng: sidequest.longitude,
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
-        stop_is_in_trip: @stops.where(id: sidequest.id).size.positive?,
+        # @TODO: this should not be in the index for side_quests. It should be in the Trip controller!
+        # stop_is_in_trip: @stops.where(id: sidequest.id).size.positive?,
         image_url: helpers.asset_url("gray.png")
       }
     end
   end
 
   def show
+    # @TODO: use Reviews related to trip, not just the first two
     @reviews = Review.first(2)
     @review = Review.new
     @markers = [{
@@ -35,6 +36,7 @@ class SideQuestsController < ApplicationController
   def create
     @sidequest = SideQuest.create(set_params)
     @sidequest.user = current_user
+    # @TODO: use the category selected by the user!
     @sidequest.category = Category.first
     if @sidequest.save!
       redirect_to side_quest_path(@sidequest), notice: "Sidequest was successfully created"
