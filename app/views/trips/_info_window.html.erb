@@ -4,19 +4,39 @@
     <h2><%= sidequest.name %></h2>
     <p>Address:<%= sidequest.address %></p>
     <p><%= sidequest.description%></p>
-    <div class = 'card'>
+    <div>
       <%= link_to "Explore", trip_side_quest_path(@trip, sidequest), class: "btn-flat"  %>
-      <%#= link_to "Add Stop", new_trip_side_quest_stop_path(@trip, sidequest ), class: "btn-flat"  %>
     </div>
+    <div>
+      <%= link_to "Add Stop", new_trip_side_quest_stop_path(@trip, sidequest ), class: "btn-flat"  %>
+    </div>
+  </div>
   </div>
 <% else %>
   <div class = 'container'>
-    <h2><%= sidequest.name %></h2>
-    <p>Address:<%= sidequest.address %></p>
-    <p><%= sidequest.description%></p>
     <div>
-      <%= link_to "Explore", trip_side_quests_path(@trip, sidequest), class: "btn-flat"  %>
-      <%#= link_to "Add Stop", new_trip_side_quest_stop_path(@trip, sidequest ), class: "btn-flat"  %>
+      <h2><%= sidequest.name %></h2>
+      <p>Address:<%= sidequest.address %></p>
+      <p><%= sidequest.description%></p>
+      <div>
+        <div>
+          <%= link_to "Explore", trip_side_quests_path(@trip, sidequest), class: "btn-flat"  %>
+        </div>
+        <div>
+          <%= link_to "Add Stop", new_trip_side_quest_stop_path(@trip, sidequest ), class: "btn-flat"  %>
+        </div>
+      </div>
     </div>
   </div>
 <%end%>
+
+  <% comment do %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+      </div>
+    </div>
+  <% end %>
