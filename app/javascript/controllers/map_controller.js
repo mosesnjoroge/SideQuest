@@ -35,31 +35,35 @@ export default class extends Controller {
         }
       });
       console.log(typeof window.location.pathname);
-if (window.location.pathname.includes("trips")) {
-  this.map.addLayer({
-      'id': 'route',
-      'type': 'line',
-      'source': 'route',
-      'layout': {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        'paint': {
-            'line-color': '#D9D838',
-            'line-width': 8
-          }
-        });
+      if (window.location.pathname.includes("side_quests")) { // change here
+        this.map.addLayer({
+          'id': 'route',
+          'type': 'line',
+          'source': 'route',
+          'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          'paint': {
+              'line-color': '#D9D838',
+              'line-width': 8 //Line is coming from this block
+            }
+          });
       }
     });
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-const instructions = document.getElementById('instructions');
-const steps = data.legs[0].steps;
 
-let tripInstructions = '';
-instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-  data.duration / 60
-)} min 🚙 </strong></p>`;
+    const instructions = document.getElementById('instructions');
+    const steps = data.legs[0].steps;
+
+    let tripInstructions = '';
+    if (!!instructions) {
+      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+      data.duration / 60
+      )} min 🚙 </strong></p>`;
+    }
 
   }
 
@@ -86,6 +90,7 @@ instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
         .setPopup(popup)
         .addTo(this.map);
       } else if (marker.stop_is_in_trip) {
+        console.log("stop")
         customMarker.className = "marker"
         customMarker.style.backgroundImage = `url('${marker.image_url}')`
         customMarker.style.backgroundSize = "cover"

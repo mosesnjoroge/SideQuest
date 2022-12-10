@@ -2,21 +2,44 @@ class SideQuestsController < ApplicationController
 
   before_action :set_sidequest, only: %i[show update destroy]
   before_action :set_review, only: %i[show]
+  before_action :set_trip, only: %i[index show]
+
 
 
   def index
-    @sidequests = SideQuest.all
-    @stops = SideQuest.joins("JOIN stops ON stops.trip_id = 187 AND stops.side_quest_id = side_quests.id")
-    @markers = @sidequests.geocoded.map do |sidequest|
-      {
-        lat: sidequest.latitude,
-        lng: sidequest.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
-        stop_is_in_trip: @stops.where(id: sidequest.id).size.positive?,
-        image_url: helpers.asset_url("gray.png")
-      }
+    # @sidequests = SideQuest.all
+    # @stops = SideQuest.joins("JOIN stops ON stops.trip_id = #{Trip.first.id} AND stops.side_quest_id = side_quests.id")
+    # @markers = @sidequests.geocoded.map do |sidequest|
+    #   {
+    #     lat: sidequest.latitude,
+    #     lng: sidequest.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
+    #     stop_is_in_trip: @stops.where(id: sidequest.id).size.positive?,
+    #     image_url: helpers.asset_url("gray.png")
+
+    #   }
+      # @sidequests = SideQuest.all
+      @locations = Location.limit(2)
+
+      @sidequests = SideQuest.joins("JOIN stops ON stops.trip_id = #{Trip.first.id} AND stops.side_quest_id = side_quests.id")
+      @markers = @sidequests.geocoded.map do |sidequest|
+        {
+          lat: sidequest.latitude,
+          lng: sidequest.longitude,
+          info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
+          stop_is_in_trip: @sidequests.where(id: sidequest.id).size.positive?,
+          image_url: helpers.asset_url("gray.png")
+
+        }
+      end
+
+      @locations.geocoded.each do |location|
+        @markers << { lat: location.latitude, lng: location.longitude, is_start_end: true,
+        info_window: render_to_string(partial: "info_location", locals: {location: location}),
+        image_url: helpers.asset_url("yellow.png") }
+      end
+      @sidequests2 = SideQuest.first(6)
     end
-  end
 
   def show
     @reviews = Review.first(2)
@@ -67,10 +90,15 @@ class SideQuestsController < ApplicationController
   end
 
   def set_sidequest
-    @sidequest = SideQuest.find(params[:id])
+     @sidequest = SideQuest.find(params[:id])
   end
 
   def set_review
    @review = Review.find_by(side_quest_id: params[:id])
+  end
+
+
+  def set_trip
+     @trip = Trip.find(params[:trip_id])
   end
 end
