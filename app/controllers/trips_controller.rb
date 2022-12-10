@@ -14,10 +14,13 @@ class TripsController < ApplicationController
     @sidequests = @trip.stops.map { |stop| stop.side_quest }
     # @start_end_points = @trip.start_geolocation
     @markers = @sidequests.map do |sidequest|
+
       {
         lat: sidequest.latitude,
         lng: sidequest.longitude,
-        # info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
+        stop_is_in_trip: Stop.where(trip: @trip, side_quest: sidequest).size.positive?,
+        image_url: helpers.asset_url("gray.png"),
+        info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
       }
     end
 
@@ -65,7 +68,9 @@ class TripsController < ApplicationController
       {
         lat: sidequest.latitude,
         lng: sidequest.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
+        info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
+        stop_is_in_trip: Stop.where(trip: @trip, side_quest: sidequest).size.positive?,
+        image_url: helpers.asset_url("gray.png")
       }
     end
 

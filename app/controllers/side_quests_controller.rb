@@ -4,14 +4,14 @@ class SideQuestsController < ApplicationController
   before_action :set_trip, only: %i[index show]
 
   def index
+    # maybe we want SideQuest.where(user: current_user)?
+    # an index of ALL sidequests isn't helpful or interesting
     @sidequests = SideQuest.all
     @markers = @sidequests.geocoded.map do |sidequest|
       {
         lat: sidequest.latitude,
         lng: sidequest.longitude,
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
-        # @TODO: this should not be in the index for side_quests. It should be in the Trip controller!
-        # stop_is_in_trip: @stops.where(id: sidequest.id).size.positive?,
         image_url: helpers.asset_url("gray.png")
       }
     end
@@ -39,7 +39,7 @@ class SideQuestsController < ApplicationController
     if @sidequest.save!
       redirect_to side_quest_path(@sidequest), notice: "Sidequest was successfully created"
     else
-      redirect_to new_side_quest_path, notice: "Sidequest details were not correct"
+      redirect_to new_side_quests_path, notice: "Sidequest details were not correct"
     end
   end
 
@@ -49,9 +49,9 @@ class SideQuestsController < ApplicationController
 
   def update
     if @sidequest.update(side_quest)
-      redirect_to side_quest_path, notice: "Sidequest was successfully updated"
+      redirect_to side_quests_path, notice: "Sidequest was successfully updated"
     else
-      redirect_to new_side_quest_path, notice: 'Your details were not correct, try again'
+      redirect_to new_side_quests_path, notice: 'Your details were not correct, try again'
     end
   end
 
