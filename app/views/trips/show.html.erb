@@ -7,6 +7,24 @@
 
   <div class = "footer-info text-center">
    <div class = "btn">
-      <%= link_to 'Navigate', trip_side_quests_path(@trip), class: "btn btn-link" %>
+      <%= link_to 'Navigate', trip_side_quests_path(@trip), class: "foottext" %>
+   </div>
+ </div>
+<%comment do %>
+      <div class = "trip-title">
+        <p><i class="fa-solid fa-star">
+          </i>
+          <div class="placename">
+            <strong>End:</strong>
+            <%= @trip.end_location.address%>
+          </div>
+        </p>
+      </div>
+  </div>
+
+  <div class = "footer-info text-center">
+    <div class = "btn">
+      <%= link_to 'NAVIGATE', side_quests_path, class: "foottext" %>
     </div>
   </div>
+<% end %>

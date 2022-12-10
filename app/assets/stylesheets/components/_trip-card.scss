@@ -31,12 +31,18 @@
   position: absolute;
   right: 30px;
   top: 356px;
+  i {
+    color: $light-yellow;
+  }
 }
 
 .trip-destination-address-icon{
   position: absolute;
   right: 30px;
-  bottom: 280px;
+  bottom: 270px;
+  i {
+    color: $light-yellow;
+  }
 }
 
 .trip-info a{
