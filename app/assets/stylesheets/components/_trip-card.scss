@@ -50,3 +50,32 @@
   font-family: "Josefin Sans";
   color: #4C6085;
 }
+
+.trips-display-card {
+  background-color: #4C6085;
+  font-family: "Josefin Sans";
+  color: white;
+}
+
+.trip-list-card {
+  background-color: $dark-blue;
+  color: white;
+  margin-bottom: 18px;
+  padding-top: 16px;
+  padding-bottom: 30px;
+  font-size: 14px;
+}
+
+.trip-date{
+  color: white;
+  font-weight: lighter;
+}
+
+.sidequest-number{
+  color: white;
+  font-weight: lighter;
+}
+
+.trip-link {
+  color: white;
+}

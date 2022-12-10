@@ -1,6 +1,24 @@
-<div class = "container">
+<div class = 'text-center mb-3 mt-3'>
+  <h1>My Trips</h1>
+</div>
+<div class = "mt-5">
   <% @trips.each do |trip| %>
-    <%= trip.start_location.address%>
-    <%= trip.end_location.address%>
+    <div class = "trip-list-card">
+      <div class = 'container'>
+        <div class = 'trip-list-title' >
+          <%= trip.start_location.address%> ->
+          <%= trip.end_location.address%>
+        </div>
+        <div class="trip-date">
+          Your trip is on: <%= trip.created_at.strftime("%Y-%m-%d") %>
+        </div>
+        <div class="sidequest-number">
+          <%= trip.stops.count %> Sidequests
+        </div>
+        <div class="trip-link">
+          <%= link_to "See Visted Quests", trip_path(trip), class:"trip-link" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
