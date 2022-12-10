@@ -50,6 +50,7 @@ export default class extends Controller {
         });
       }
     });
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
@@ -81,6 +82,7 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map);
       } else if (marker.stop_is_in_trip) {
+        console.log("stop")
         customMarker.className = "marker"
         customMarker.style.backgroundImage = `url('${marker.image_url}')`
         customMarker.style.backgroundSize = "cover"

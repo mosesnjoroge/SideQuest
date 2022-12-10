@@ -152,7 +152,6 @@ class TripsController < ApplicationController
   end
 
   def set_sidequest
-    @sidequest = SideQuest.find(params[:id])
   end
 
   def set_category

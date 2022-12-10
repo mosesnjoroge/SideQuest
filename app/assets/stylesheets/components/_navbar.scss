@@ -1,5 +1,6 @@
 .navbar-brand img {
   width: 40px;
+  height: 40px;
 }
 
 .footer-container {
@@ -16,17 +17,37 @@
   background: #E5E9F7;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .knight-logo {
   width: 34px;
   height: 35px;
   top:8px;
+
 }
 
 .avatar-hex {
   width: 48px;
   height: 48px;
   background: url(assets/images/sqs/Avataravatar-hex.png)
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.fa-chevron-left {
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-btn a{
+  text-decoration: none;
 }

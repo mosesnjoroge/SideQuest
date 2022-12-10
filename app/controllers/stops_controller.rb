@@ -14,9 +14,9 @@ class StopsController < ApplicationController
     @stop.order = (Stop.last.id) + 1
   end
   if @stop.save
-    redirect_to side_quests_path, notice: "#{@sidequest.name} was successfully added to your trip"
+    redirect_to trip_path(@trip), notice: "#{@sidequest.name} was successfully added to your trip"
   else
-    redirect_to side_quests_path, notice: "We failed to add #{@sidequest.name} to your trip, please try again"
+    redirect_to trip_path(@trip), notice: "We failed to add #{@sidequest.name} to your trip, please try again"
   end
   end
 
@@ -29,6 +29,6 @@ class StopsController < ApplicationController
   private
 
   def set_trip
-    @trip = Trip.first
+    @trip = Trip.find(params[:trip_id])
   end
 end
