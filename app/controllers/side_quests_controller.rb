@@ -15,6 +15,7 @@ class SideQuestsController < ApplicationController
         image_url: helpers.asset_url("gray.png")
       }
     end
+  end
 
   def show
     # @TODO: use Reviews related to trip, not just the first two
