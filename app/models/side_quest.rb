@@ -1,4 +1,5 @@
 class SideQuest < ApplicationRecord
+  has_one_attached :photo
   belongs_to :category
   belongs_to :user
   has_many :reviews, dependent: :destroy
