@@ -1,47 +1,50 @@
 <div class = 'sidequest-image-trip-page'>
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <%# cloudinary sidequest photo link %>
-        <%# <#img class="d-block w-100 h-250" src="https://en.wikipedia.org/wiki/San_Diego_Zoo#/media/File:San_Diego_Zoo_-_Rex's_Roar_2.jpg" alt=""> %>
+  <%# photos %>
+  <% comment do %>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%# cloudinary sidequest photo link %>
+          <%# <#img class="d-block w-100 h-250" src="https://en.wikipedia.org/wiki/San_Diego_Zoo#/media/File:San_Diego_Zoo_-_Rex's_Roar_2.jpg" alt=""> %>
+        </div>
+        <div class="carousel-item">
+          <%# cloudinary sidequest photo link %>
+          <%# <#img class="d-block w-100 h-250" src="https://random.imagecdn.app/500/150" alt=""> %>
+        </div>
+        <div class="carousel-item">
+          <%# cloudinary sidequest photo link %>
+          <%# <#img class="d-block w-100 h-250" src="https://random.imagecdn.app/500/150" alt=""> %>
+        </div>
       </div>
-      <div class="carousel-item">
-        <%# cloudinary sidequest photo link %>
-        <%# <#img class="d-block w-100 h-250" src="https://random.imagecdn.app/500/150" alt=""> %>
-      </div>
-      <div class="carousel-item">
-        <%# cloudinary sidequest photo link %>
-        <%# <#img class="d-block w-100 h-250" src="https://random.imagecdn.app/500/150" alt=""> %>
-      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only"></span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only"></span>
-    </a>
-  </div>
+  <% end %>
 </div>
 <%= simple_form_for @trip do |f| %>
-      <div class = "container">
-        <div class = 'trip-origin-address-icon'>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <%= f.input :start_location, :label => "Origin" %>
-        <div class = 'trip-destination-address-icon'>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <%= f.input :end_location, :label =>  "Destination"%>
-      </div>
-
-      <div class = 'container'>
-        <%= f.input :categories, collection: [ 'Parks', 'Off-Road Activities', 'Wine tours' ] %>
-      </div>
-    <div class = "footer-info text-center">
-      <div class = "btn">
-        <%= f.button :submit, 'SEARCH', class: "foottext"%>
-      </div>
+  <div class = "container">
+    <div class = 'trip-origin-address-icon'>
+      <i class="fa-solid fa-magnifying-glass"></i>
     </div>
+    <%= f.input :start_location, :label => "Origin" %>
+    <div class = 'trip-destination-address-icon'>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <%= f.input :end_location, :label =>  "Destination"%>
+  </div>
+
+  <div class = 'container'>
+    <%= f.input :categories, collection: [ 'Parks', 'Off-Road Activities', 'Wine tours' ] %>
+  </div>
+  <div class = "footer-info text-center">
+    <div class = "btn">
+      <%= f.button :submit, 'SEARCH', class: "foottext"%>
+    </div>
+  </div>
 <%end %>

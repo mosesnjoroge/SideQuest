@@ -1,7 +1,7 @@
 .body {
   height: 200px;
   position: relative;
-  border: 3px solid green;
+  // border: 3px solid green;
 }
 
 .form {
@@ -21,24 +21,36 @@
 
 .name-icon {
   position: absolute;
-  top: 143px;
+  top: 150px;
   right: 30px;
+  i {
+    color: $light-yellow;
+  }
 }
 
 .address-icon {
   position: absolute;
   right: 30px;
-  top: 228px;
+  top: 234px;
+  i {
+    color: $light-yellow;
+  }
 }
 
 .category-icon {
   position: absolute;
   right: 30px;
-  top: 312px;
+  top: 318px;
+  i {
+    color: $light-yellow;
+  }
 }
 
 .description-icon {
   position: absolute;
   right: 30px;
   top: 398px;
+  i {
+    color: $light-yellow;
+  }
 }
