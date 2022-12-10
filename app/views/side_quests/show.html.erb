@@ -4,9 +4,11 @@
   data-map-api-key-value="<%=  ENV['MAPBOX_API_KEY'] %>" >
 </div>
 
+<% if @sidequest.photo.present? %>
 <div class="sidequest-card">
   <div class = "container">
     <small>
+      <%= cl_image_tag @sidequest.photo.key, height: 180, width: 200, crop: :fit %>
       <p><%= @sidequest.name %></p>
       <p>Address:<%= @sidequest.address %></p>
     </small>
@@ -42,6 +44,43 @@
     </div>
   <% end %>
 </div>
+<% else %>
+ <p><%= @sidequest.name %></p>
+      <p>Address:<%= @sidequest.address %></p>
+    </small>
+  </div>
+  <% if !@sidequest.reviews.empty?%>
+    <div class = 'sidequest-review-card'>
+      <% @sidequest.reviews.each do |review| %>
+        <li class='list-group-item'>
+          <small>
+            <% count = 0 %>
+            <% 5.times do %>
+              <% if review.rating > count %>
+                <i class="fa-solid fa-star"></i>
+              <% else %>
+                <i class="fa-regular fa-star"></i>
+              <% end %>
+              <% count += 1 %>
+            <% end %>
+            <p><%= review.body %></p>
+          </small>
+        </li>
+      <% end %>
+      <div class = 'card'>
+        <%= link_to 'See More Reviews',trip_side_quest_reviews_path(@trip, @sidequest, @reviews ), class: 'btn-flat' %>
+        <%= link_to 'Add a Review',new_trip_side_quest_review_path(@trip, @sidequest), class: 'btn-flat' %>
+      </div>
+    </div>
+  <% else %>
+    <div class = 'list-group-item' style="background: #E5E9F7;">
+      <small>
+        <p>There are no reviews for this sidequest as of yet, be the first to experience it and tell us how it went</p>
+      </small>
+    </div>
+  <% end %>
+
+<%end %>
 
 
      <%# <div class = 'list-group-item'>
