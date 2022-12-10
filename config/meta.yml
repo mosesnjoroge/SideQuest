@@ -1,0 +1,5 @@
+meta_product_name: "SideQuests"
+meta_title: "SideQuests- The Journey is the Destination"
+meta_description: "SideQuests, the ultimate app for making your roadtrip more exciting and more memorable."
+meta_image: "Groupnavbar-knight.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
