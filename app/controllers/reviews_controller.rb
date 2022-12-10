@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.save
     if @sidequest.save
-      redirect_to trip_side_quests_path(@trip, @sidequest, @review)
+      redirect_to trip_side_quest_path(@trip.id, @sidequest.id)
     else
       redirecto_to new_side_quests_path
     end

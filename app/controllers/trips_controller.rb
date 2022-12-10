@@ -70,7 +70,7 @@ class TripsController < ApplicationController
 
     points = route_info['geometry']['coordinates']
     trip_distance_in_meters = route_info['distance']
-    search_radius = trip_distance_in_meters / 1_000 / 10
+    search_radius = trip_distance_in_meters / 1_000 / 5
 
     @sidequests = get_sidequests_within_radius_of_route(points, search_radius)
 

@@ -8,5 +8,5 @@ Rails.application.routes.draw do
       resources :stops
     end
   end
-  resources :side_quests, only: %i[new create]
+  resources :side_quests, only: %i[new create show]
 end
