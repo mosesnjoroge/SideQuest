@@ -73,12 +73,6 @@ class TripsController < ApplicationController
 
     @sidequests = get_sidequests_within_radius_of_route(points, search_radius)
 
-    if @sidequests.blank?
-      Trip.find(@trip.id).destroy
-      redirect_to new_trip_path(), notice: "No SideQuests yet for this trip"
-      return false
-    end
-  
     @markers = @sidequests.map do |sidequest|
       {
         lat: sidequest.latitude,
@@ -160,7 +154,7 @@ class TripsController < ApplicationController
       sidequests_near_point = SideQuest.near(point.reverse, radius)
       possible_sidequests.concat(sidequests_near_point) unless sidequests_near_point.blank?
     end
-    possible_sidequests.uniq!
+    possible_sidequests.uniq! || []
   end
 
   def trip_params
