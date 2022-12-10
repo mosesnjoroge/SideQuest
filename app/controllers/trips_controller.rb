@@ -25,7 +25,7 @@ class TripsController < ApplicationController
     end
 
     start_end_markers = [@trip.start_geolocation, @trip.end_geolocation].map do |location|
-      { 
+      {
         lat: location['lat'],
         lng: location['lon'],
         is_start_end: true,
@@ -45,7 +45,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     start_results = Geocoder.search(@trip[:start_location])
     end_results = Geocoder.search(@trip[:end_location])
-    
+
     if start_results.blank? || end_results.blank?
       Trip.find(@trip.id).destroy
       redirect_to new_trip_path(), notice: "One or more of your addresses was not found"
@@ -54,7 +54,7 @@ class TripsController < ApplicationController
 
     @trip.start_geolocation = start_results.first.data
     @trip.end_geolocation = end_results.first.data
-    
+
     @trip.user = current_user
     if @trip.save
       redirect_to edit_trip_path(@trip)
@@ -70,7 +70,7 @@ class TripsController < ApplicationController
 
     points = route_info['geometry']['coordinates']
     trip_distance_in_meters = route_info['distance']
-    search_radius = trip_distance_in_meters / 1_000 / 10
+    search_radius = trip_distance_in_meters / 1_000 / 5
 
     @sidequests = get_sidequests_within_radius_of_route(points, search_radius)
 
@@ -85,7 +85,7 @@ class TripsController < ApplicationController
     end
 
     start_end_markers = [points.first, points.last].map do |location|
-      { 
+      {
         lat: location.last,
         lng: location.first,
         is_start_end: true,
