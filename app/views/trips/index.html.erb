@@ -6,17 +6,18 @@
     <div class = "trip-list-card">
       <div class = 'container'>
         <div class = 'trip-list-title' >
-          <%= trip.start_location.address%> ->
-          <%= trip.end_location.address %>
+          <%= trip.start_location %>
+          →
+          <%= trip.end_location %>
         </div>
         <div class="trip-date">
-          Your trip is on: <%= trip.created_at.strftime("%Y-%m-%d") %>
+          Date of trip: <%= trip.created_at.strftime("%Y-%m-%d") %>
         </div>
         <div class="sidequest-number">
           <%= trip.stops.count %> Sidequests
         </div>
         <div class="trip-link">
-          <%= link_to "See Visted Quests", trip_path(trip), class:"trip-link" %>
+          <%= link_to "See All Quests", trip_path(trip), class:"trip-link" %>
         </div>
       </div>
     </div>
