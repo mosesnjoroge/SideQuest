@@ -4,7 +4,6 @@
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-trip-value="<%= @trip.to_json %>"
   data-map-api-key-value="<%=  ENV['MAPBOX_API_KEY'] %>" >
-  <div id="instructions"></div>
 </div>
 
 
@@ -19,13 +18,13 @@
     </p>
   </div>
   <div class="trip-info">
-    <ul>
+    <ol>
       <% @sidequests.each do |sidequest|%>
         <li>
           <%= link_to sidequest.name, side_quest_path(sidequest.id)%>
         </li>
       <%end %>
-    </ul>
+    </ol>
   </div>
   <div class="trip-title">
     <p>
@@ -40,6 +39,6 @@
 
 <div class="footer-info text-center">
   <div class="btn">
-    <%= link_to 'NAVIGATE', '#', class: "foottext" %>
+    <%= link_to 'NAVIGATE', '#', class: " btn foottext" %>
   </div>
 </div>

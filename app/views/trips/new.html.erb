@@ -4,22 +4,47 @@
       <div class="carousel-item active">
         <%# cloudinary sidequest photo link %>
         <%= image_tag "torresdelpaine.jpeg" %>
+        <div class="carousel-caption">
+          <div class="sidephoto-caption">
+            <h5>lorem ipsum1</h5>
+          </div>
+        </div>
       </div>
       <div class="carousel-item">
         <%# cloudinary sidequest photo link %>
         <%= image_tag "bigbend.jpg" %>
+        <div class="carousel-caption">
+          <div class="sidephoto-caption">
+            <h5>lorem ipsum2</h5>
+          </div>
+        </div>
       </div>
       <div class="carousel-item">
         <%# cloudinary sidequest photo link %>
-         <%= image_tag "capies.jpeg" %>
+        <%= image_tag "capies.jpeg" %>
+        <div class="carousel-caption">
+          <div class="sidephoto-caption">
+            <h5>lorem ipsum3</h5>
+          </div>
+        </div>
       </div>
       <div class="carousel-item">
         <%# cloudinary sidequest photo link %>
-         <%= image_tag "mcafeeknob.jpeg" %>
+        <%= image_tag "mcafeeknob.jpeg" %>
+        <div class="carousel-caption">
+          <div class="sidephoto-caption">
+            <h5>lorem ipsum4</h5>
+          </div>
+        </div>
       </div>
       <div class="carousel-item">
         <%# cloudinary sidequest photo link %>
-         <%= image_tag "bigdinodrumheller.jpeg" %>
+        <%= image_tag "bigdinodrumheller.jpeg" %>
+        <div class="carousel-caption">
+          <div class="sidephoto-caption">
+            <h5>lorem ipsum5</h5>
+          </div>
+        </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -44,9 +69,6 @@
     </div>
   </div>
 
-  <div class = 'container'>
-    <%= f.input :categories, collection: [ 'Parks', 'Off-Road Activities', 'Wine tours' ] %>
-  </div>
   <div class = "footer-info">
       <%= f.button :submit, 'SEARCH', class: "foottext"%>
   </div>

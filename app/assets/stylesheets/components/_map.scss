@@ -34,8 +34,6 @@
   font-weight: lighter;
   font-size: 13px;
 }
-.sidequesst-popup-links {
-}
 
 #instructions {
   position: absolute;
@@ -55,6 +53,5 @@
   height: calc(100vh - 128px);
 }
 .map-trips {
-  width: 100%;
-  height: calc(100vh - 400px);
+  min-height: 63vh;
 }

@@ -5,10 +5,10 @@
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   data-map-trip-value="<%= @trip.to_json %>"
 >
-  <div id="instructions"></div>
+
 </div>
 
 
 <div class = "footer-info">
-  <%= link_to 'CONFIRM TRIP', trip_path(@trip), class: "foottext" %>
+  <%= link_to 'CONFIRM TRIP', trip_path(@trip), class: " btn foottext" %>
 </div>

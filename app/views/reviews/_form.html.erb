@@ -1,14 +1,12 @@
-<div class = 'container'>
-  <div class="column">
-    <div class="col-12 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h2 class = 'text-center'>Leave a Review</h2>
-        <%= simple_form_for [@trip, @sidequest, @review] do |f| %>
-          <%= f.input :rating, collection: 0..5 %>
-          <%= f.input :body, :label => "Review"%>
-          <%= f.submit class: 'btn-flat' %>
-        <% end %>
+<div class="column">
+  <div class="col-12 offset-lg-3">
+    <h2 class = 'text-center'>Leave a Review</h2>
+    <%= simple_form_for [@trip, @sidequest, @review] do |f| %>
+      <%= f.input :rating, collection: 0..5 %>
+      <%= f.input :body,:as => :text, :label => "Review"%>
+      <div class="submit-review-btn pt-3">
+        <%= f.submit "POST", class: 'btn-flat w-100' %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
