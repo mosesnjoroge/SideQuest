@@ -32,7 +32,11 @@
         <p class="review-body"><%= review.body %> - <span><%= review.created_at.strftime("%Y/%m/%d") %></span></p>
       </div>
     <% end %>
-    <%= link_to 'Add a Review',new_side_quest_review_path(@sidequest), class: 'btn btn-flat btn-fixed-wide' %>
+    <div class="footer-info text-center">
+      <div class="btn">
+        <%= link_to 'ADD A REVIEW',new_side_quest_review_path(@sidequest), class: 'btn foottext' %>
+      </div>
+    </div>
   </div>
 <% else %>
   <div class = 'list-group-item' style="background: #E5E9F7;">
@@ -40,5 +44,9 @@
       <p>There are no reviews for this sidequest as of yet, be the first to experience it and tell us how it went</p>
     </small>
   </div>
-  <%= link_to 'Add a Review',new_side_quest_review_path(@sidequest), class: 'btn btn-fixed-wide' %>
+  <div class="footer-info text-center">
+    <div class="btn">
+      <%= link_to 'ADD A REVIEW',new_side_quest_review_path(@sidequest), class: 'btn foottext' %>
+    </div>
+  </div>
 <% end %>

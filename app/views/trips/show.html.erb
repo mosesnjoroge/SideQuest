@@ -18,13 +18,13 @@
     </p>
   </div>
   <div class="trip-info">
-    <ul>
+    <ol>
       <% @sidequests.each do |sidequest|%>
         <li>
           <%= link_to sidequest.name, side_quest_path(sidequest.id)%>
         </li>
       <%end %>
-    </ul>
+    </ol>
   </div>
   <div class="trip-title">
     <p>
