@@ -1,7 +1,6 @@
 class SideQuestsController < ApplicationController
   before_action :set_sidequest, only: %i[show update destroy]
   before_action :set_review, only: %i[show]
-  before_action :set_trip, only: %i[index show]
 
   def index
     # maybe we want SideQuest.where(user: current_user)?
@@ -19,7 +18,7 @@ class SideQuestsController < ApplicationController
 
   def show
     # @TODO: use Reviews related to trip, not just the first two
-    @reviews = Review.first(2)
+    @reviews = @sidequest.reviews
     @review = Review.new
     @markers = [{
       lat: @sidequest.latitude,
@@ -68,15 +67,10 @@ class SideQuestsController < ApplicationController
   end
 
   def set_sidequest
-     @sidequest = SideQuest.find(params[:id])
+    @sidequest = SideQuest.find(params[:id])
   end
 
   def set_review
    @review = Review.find_by(side_quest_id: params[:id])
-  end
-
-
-  def set_trip
-     @trip = Trip.find(params[:trip_id])
   end
 end
