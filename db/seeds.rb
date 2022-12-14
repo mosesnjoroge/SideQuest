@@ -23,14 +23,14 @@ alex = User.create({
 })
 
 trip1 = Trip.create({
-  start_location: "4200 edouard montpetit",
+  start_location: "1155 Metcalfe St, Montreal, Qc",
   end_location: "380 Sussex Dr, Ottawa, ON",
   user: ricardo
 })
 
 
 trip2 = Trip.create({
-  start_location: "4200 edouard montpetit",
+  start_location: "1155 Metcalfe St, Montreal, Qc",
   end_location: "3515 Rue la Fontaine, Montreal, QC",
   user: alex
 })
@@ -272,7 +272,7 @@ review9 = Review.create({
 
 review10 = Review.create({
   side_quest: sidequest9,
-  body: "Excellent place. Staff are great and kind. Need a little bit of maintenance but overall it is a fun experience",
+  body: "Excellent place. Staff is great and kind. Need a little bit of maintenance but overall it is a fun experience",
   rating: 4,
   user: alex
 })
