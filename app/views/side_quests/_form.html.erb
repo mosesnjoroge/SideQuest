@@ -6,22 +6,22 @@
     <div class = 'name-icon'>
       <i class="fa-solid fa-user"></i>
     </div>
-    <%= f.input :name, placeholder: 'tim hortons' %>
+    <%= f.input :name, placeholder: 'Osgoode Township Museum' %>
 
     <div class = 'address-icon'>
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <%= f.input :address, placeholder: '1256 wilson' %>
+    <%= f.input :address, placeholder: '7814 Lawrence St, Vernon, ON K0A 3J0' %>
 
     <div class = 'category-icon'>
       <i class="fa-sharp fa-solid fa-feather"></i>
     </div>
-    <%= f.input :category, placeholder: 'type of sidequest' %>
+    <%= f.input :category, placeholder: 'Entertainment' %>
 
     <div class = 'description-icon'>
       <i class="fa-sharp fa-solid fa-feather"></i>
     </div>
-    <%= f.input :description, :as => :text, placeholder: 'Amazing experience' %>
+    <%= f.input :description, :as => :text, placeholder: 'Amazing museum' %>
 
     <%= f.input :photo, as: :file, direct_upload: true %>
     <%= f.input :price, :collection => 10..150, placeholder: '5 CAD' %>

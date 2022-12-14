@@ -63,7 +63,7 @@ class SideQuestsController < ApplicationController
   private
 
   def set_params
-    params.require(:side_quest).permit(:name, :address, :description, :price)
+    params.require(:side_quest).permit(:name, :address, :description, :price, :photo)
   end
 
   def set_sidequest
