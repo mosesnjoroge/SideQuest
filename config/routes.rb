@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :trips do
-    resources :side_quests, except: %i[new] do
+    resources :side_quests do
       resources :reviews, only: %i[index new create]
       resources :stops
     end
