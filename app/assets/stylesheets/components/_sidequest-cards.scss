@@ -38,3 +38,11 @@
   background-color: #F3De19 !important;
   color: #17285B !important;
 }
+
+.sidequest-photosize{
+  img{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+}

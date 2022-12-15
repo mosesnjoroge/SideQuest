@@ -1,4 +1,4 @@
-<div class = 'container sidequest-image-trip-page'>
+<div class = 'container sidequest-image-trip-page mt-3'>
   <div id="carouselExampleControls" class="carousel slide mt-2" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -16,24 +16,6 @@
         <div class="carousel-caption">
           <div class="sidephoto-caption">
             <h5>lorem ipsum2</h5>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%# cloudinary sidequest photo link %>
-        <%= image_tag "capies.jpeg" %>
-        <div class="carousel-caption">
-          <div class="sidephoto-caption">
-            <h5>lorem ipsum3</h5>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%# cloudinary sidequest photo link %>
-        <%= image_tag "mcafeeknob.jpeg" %>
-        <div class="carousel-caption">
-          <div class="sidephoto-caption">
-            <h5>lorem ipsum4</h5>
           </div>
         </div>
       </div>
@@ -58,7 +40,7 @@
   </div>
 </div>
 <%= simple_form_for @trip do |f| %>
-  <div class = "container mt-3">
+  <div class = "container mt-4">
     <div class="field">
       <i class="fa-solid fa-magnifying-glass"></i>
       <%= f.input :start_location, :label => "Origin" %>
