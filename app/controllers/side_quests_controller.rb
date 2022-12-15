@@ -33,12 +33,13 @@ class SideQuestsController < ApplicationController
   end
 
   def create
+    @trip = Trip.last
     @sidequest = SideQuest.create(set_params)
     @sidequest.user = current_user
     # @TODO: use the category selected by the user!
     @sidequest.category = Category.first
     if @sidequest.save!
-      redirect_to side_quest_path(@sidequest), notice: "Sidequest was successfully created"
+      redirect_to edit_trip_path(@trip), notice: "Sidequest was successfully created"
     else
       redirect_to new_side_quests_path, notice: "Sidequest details were not correct"
     end
