@@ -4,10 +4,9 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :side_quests, except: %i[new] do
+      resources :reviews, only: %i[index new create]
       resources :stops
     end
   end
-  resources :side_quests, only: %i[new create show] do
-    resources :reviews, only: %i[index new create]
-  end
+  resources :side_quests, only: %i[new create show]
 end
