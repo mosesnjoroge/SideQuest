@@ -7,9 +7,7 @@
 <div class="sidequest-card">
   <small>
     <% if @sidequest.photo.present? %>
-      <div class= 'sidequest-photosize'>
-        <%= cl_image_tag @sidequest.photo.key, height: 200, crop: :fit%>
-      </div>
+      <%= cl_image_tag @sidequest.photo.key, height: 800, crop: :fit, style: "width: 100%; margin-bottom: 20px;" %>
     <% end %>
     <h2 class="text-center"><%= @sidequest.name %></h2>
     <p class="text-center" >Address: <%= @sidequest.address %></p>
