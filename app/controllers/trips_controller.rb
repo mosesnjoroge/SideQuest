@@ -1,5 +1,6 @@
 require 'json'
 require 'net/http'
+
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show update destroy edit]
   #before_action :set_sidequest, only: %i[index]
@@ -17,11 +18,15 @@ class TripsController < ApplicationController
       {
         lat: sidequest.latitude,
         lng: sidequest.longitude,
+        name: sidequest.name,
+        address: sidequest.address,
         stop_is_in_trip: Stop.where(trip: @trip, side_quest: sidequest).size.positive?,
         image_url: helpers.asset_url("gray.png"),
         info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest})
       }
     end
+
+    @google_maps_directions_url = generate_google_maps_directions_url(@trip, @markers)
 
     start_end_markers = [@trip.start_geolocation, @trip.end_geolocation].map do |location|
       {
@@ -101,6 +106,17 @@ class TripsController < ApplicationController
   end
 
   private
+
+  def generate_google_maps_directions_url(start_end, waypoints)
+    origin = CGI.escape(start_end.start_location)
+    destination = CGI.escape(start_end.end_location)
+
+    waypoints_encoded = waypoints.map do |waypoint|
+      CGI.escape("#{waypoint[:name]}, #{waypoint[:address]}")
+    end
+
+    "https://www.google.com/maps/dir/?api=1&origin=#{origin}&destination=#{destination}&waypoints=#{waypoints_encoded.join('|')}"
+  end
 
   def get_mapbox_route_info_for_trip(start_location, end_location)
     start_geo_result = Geocoder.search(start_location).first
