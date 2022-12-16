@@ -1,6 +1,7 @@
 .trip-card {
   width: 100%;
   height: auto;
+  padding-bottom: 80px;
 }
 
 .trip-title {
@@ -8,6 +9,8 @@
   font-family: "Josefin Sans";
   background-color: $dark-blue;
   color: $light-blue;
+  padding: 8px 0;
+  margin-bottom: 8px;
 }
 
 .placename {
@@ -45,8 +48,8 @@
   text-decoration: none;
   font-family: "Josefin Sans";
   color: #4c6085;
-  ol{
-    color:#4c6085;
+  ol {
+    color: #4c6085;
   }
 }
 
