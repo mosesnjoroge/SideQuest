@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Stop.delete_all
 Review.delete_all
 SideQuest.delete_all
 Category.delete_all
@@ -207,19 +208,28 @@ sidequest11.photo.attach(io: file11, filename: "sidequest11.png", content_type: 
 sidequest11.save!
 
 
-review = Review.create({
-  side_quest: sidequest,
-  body: "Awesome place its a must place to visit in Canada",
-  rating: 5,
-  user: alex
-})
-
 review2 = Review.create({
   side_quest: sidequest,
   body: "Great activities for the kids",
   rating: 5,
   user: alex
-})
+    })
+
+review12 = Review.create({
+  side_quest: sidequest,
+  body: "Very nice Safari Park. You can see a variety of Canadian wildlife on a 12 km self-drive safari.
+  It is perfect for an activity with all family.",
+  rating: 5,
+  user: alex
+    })
+
+review13 = Review.create({
+  side_quest: sidequest,
+  body: "This was such an amazing experience. You drive through and the deers stick their heads in your windows for food.
+  It is very cute and amazingly fun. I went in the winter and they have dog sledding, Snowshoeing, and a ton of maple treats. They also have a petting zoo with ponies, ox, goats, and sheep.",
+  rating: 5,
+  user: alex
+    })
 
 review3 = Review.create({
   side_quest: sidequest2,
@@ -237,15 +247,25 @@ review4 = Review.create({
 
 review5 = Review.create({
   side_quest: sidequest3,
-  body: "Do not support this zoo",
-  rating: 3,
+  body: "Terrible.
+  My son asked me why the lion was crying and why the animals looked so sad.
+  Some enclosures are unsafe and broken.
+  Clearly, the animals were thirsty and had no access to water at the time of our visit",
+  rating: 1,
+  user: alex
+})
+
+review14 = Review.create({
+  side_quest: sidequest3,
+  body: "I wish they updated their status on Google Maps or the website!! I went with my family for about a 1-hour journey for nothing!! Disappointed 😤",
+  rating: 2,
   user: alex
 })
 
 review6 = Review.create({
   side_quest: sidequest3,
-  body: "More animals than I expected, decent place, we had fun",
-  rating: 3,
+  body: "Goats were running everywhere, I do not recommend this place",
+  rating: 2,
   user: alex
 })
 
