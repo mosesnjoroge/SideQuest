@@ -9,7 +9,12 @@
   align-items: center;
   padding-bottom: 3rem;
   padding-top: 3rem;
-  background: linear-gradient(0deg, #070E24 45%, rgba(23, 53, 140, 0.69) 85%, #8198e8b5 100%);
+  background: linear-gradient(
+    0deg,
+    #070e24 45%,
+    rgba(23, 53, 140, 0.69) 85%,
+    #8198e8b5 100%
+  );
 }
 
 .tagline {
@@ -26,6 +31,9 @@
   font-family: "Josefin Sans";
   font-style: normal;
   color: #ffffff;
+  img {
+    margin-bottom: 80px;
+  }
   h1 {
     font-weight: 700;
     font-size: 64px;
@@ -60,9 +68,4 @@
   width: 100%;
   border-radius: 4px;
   background-color: #e5e9f7;
-}
-
-.content-box {
-  position: absolute;
-  bottom: 170px;
 }

@@ -1,28 +1,32 @@
 .sidequest-photo {
-  width:100%;
-  height:200px;
+  width: 100%;
+  height: 200px;
 
-  img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     padding-bottom: 10px;
   }
 }
 
-i{
-  color: #17285B;
+i {
+  color: #17285b;
 }
 
-.sidequest-image-trip-page{
-  height:240px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.sidequest-image-trip-page {
+  height: 240px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
   align-items: center;
+  h5 {
+    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+  }
 }
 
-.carousel-item{
-  height:240px;
-  width:100%;
+.carousel-item {
+  height: 240px;
+  width: 100%;
   object-fit: cover;
 }
