@@ -1,19 +1,17 @@
 require 'json'
 require 'net/http'
 
+
+
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show update destroy edit]
-  #before_action :set_sidequest, only: %i[index]
 
   def index
     @trips = current_user.trips
-    # to be removed once the multiple trips can be displayed
   end
 
   def show
-    # Show controller should only show the SQ that are a part of the trip
     @sidequests = @trip.stops.map { |stop| stop.side_quest }
-    # @start_end_points = @trip.start_geolocation
     @markers = @sidequests.map do |sidequest|
       {
         lat: sidequest.latitude,
@@ -36,8 +34,8 @@ class TripsController < ApplicationController
         image_url: helpers.asset_url("yellow.png")
       }
     end
-    @markers.unshift(start_end_markers.first) # add start point to begining of markers
-    @markers.push(start_end_markers.last) # end end point to end of markers
+    @markers.unshift(start_end_markers.first)
+    @markers.push(start_end_markers.last)
   end
 
   def new
@@ -122,12 +120,11 @@ class TripsController < ApplicationController
     start_geo_result = Geocoder.search(start_location).first
     end_geo_result = Geocoder.search(end_location).first
 
-    # stringify coords for url
     start_coords = start_geo_result.coordinates.reverse.join('%2C')
     end_coords = end_geo_result.coordinates.reverse.join('%2C')
     coordinates = [start_coords, end_coords].join('%3B')
 
-    mapbox_api_url = URI("https://api.mapbox.com/directions/v5/mapbox/driving/#{coordinates}?alternatives=false&geometries=geojson&language=en&overview=full&steps=false&access_token=#{ENV['MAPBOX_API_KEY']}")
+    mapbox_api_url = URI("https://api.mapbox.com/directions/v5/mapbox/driving/#{coordinates}?alternatives=false&geometries=geojson&language=en&overview=full&steps=false&access_token=pk.eyJ1IjoicnRpZXJyZSIsImEiOiJjbDhxYmhkdjQwMXhoNDFvZzZ6NXZhbjl4In0.wVQDleC1CAHET3pVLdKoQA")
     mapbox_api_response = Net::HTTP.get_response(mapbox_api_url).body
     mapbox_api_json = JSON.parse(mapbox_api_response)
     mapbox_api_json['routes'][0]

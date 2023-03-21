@@ -11,4 +11,5 @@
     <%= link_to "Explore", trip_side_quest_path(@trip, sidequest), class: "btn-flat"  %>
     <%= link_to "Add Stop", new_trip_side_quest_stop_path(@trip, sidequest ), class: "btn-flat"  %>
   </div>
+  <button id="close-popup" data-action="click->map#closePopup" >Close Popup</button>
 </div>

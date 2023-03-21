@@ -105,4 +105,7 @@ export default class extends Controller {
       }
     });
   }
+  closePopup() {
+    this.map.closePopup();
+  }
 }
