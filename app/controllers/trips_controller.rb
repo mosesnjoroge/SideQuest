@@ -86,6 +86,7 @@ class TripsController < ApplicationController
       }
     end
 
+
     start_end_markers = [points.first, points.last].map do |location|
       {
         lat: location.last,
