@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { Binding } from "@hotwired/stimulus/dist/types/core/binding";
 // Connects to data-controller="map"
 export default class extends Controller {
   static values = {
@@ -54,11 +55,11 @@ export default class extends Controller {
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
 
-    const instructions = document.getElementById("instructions");
-    instructions.innerHTML = `<div>Trip duration:<br> <strong>${Math.floor(
-      data.duration / 60
-    )} minutes 🚙 </strong></div>`;
-  }
+if (instructions) {
+  instructions.innerHTML = `<div>Trip duration:<br> <strong>${Math.floor(
+    data.duration / 60
+  )} minutes 🚙 </strong></div>`;
+}
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
@@ -70,7 +71,9 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+      const popup = new mapboxgl.Popup({ maxWidth: 1200 }).setHTML(
+        marker.info_window
+      );
       const customMarker = document.createElement("div");
       if (marker.is_start_end === true) {
         customMarker.className = "marker";

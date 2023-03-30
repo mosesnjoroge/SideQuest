@@ -41,11 +41,11 @@
   <div class = "container mt-3">
     <div class="field">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <%= f.input :start_location, :label => "Origin" %>
+      <%= f.input :start_location, :label => "Origin", input_html: { placeholder: "Enter your starting point" } %>
     </div>
     <div class="field">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <%= f.input :end_location, :label =>  "Destination"%>
+<%= f.input :end_location, label: "Destination", input_html: { placeholder: "Enter your destination" } %>
     </div>
   </div>
 

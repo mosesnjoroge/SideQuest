@@ -75,7 +75,6 @@ class TripsController < ApplicationController
     search_radius = trip_distance_in_meters / 1_000 / 5
 
     @sidequests = get_sidequests_within_radius_of_route(points, search_radius)
-
     @markers = @sidequests.map do |sidequest|
       {
         lat: sidequest.latitude,

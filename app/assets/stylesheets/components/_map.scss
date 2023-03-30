@@ -57,3 +57,7 @@
 .map-trips {
   min-height: 50vh;
 }
+
+.mapboxgl-popup-content {
+  max-width: 1200px !important;
+}
