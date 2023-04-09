@@ -4,12 +4,10 @@
     <%= cl_image_tag sidequest.photo.key, width: 400, crop: :fit, style: "width: 100%; max-height: 110px; object-fit: cover; object-position: center;" %>
   <%end%>
     <h2><%= sidequest.name %></h2>
-    <p class="sidequest-popup-address"><%= sidequest.address %></p>
     <p class="sidequest-popup-description"><%= sidequest.description%></p>
   </div>
   <div class="sidequest-popup-links">
     <%= link_to "Explore", trip_side_quest_path(@trip, sidequest), class: "btn-flat"  %>
     <%= link_to "Add Stop", new_trip_side_quest_stop_path(@trip, sidequest ), class: "btn-flat"  %>
   </div>
-  <button id="close-popup" data-action="click->map#closePopup" >Close Popup</button>
 </div>
