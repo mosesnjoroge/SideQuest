@@ -1,6 +1,13 @@
 .sidequest-card {
   width: 100%;
   color: $dark-blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidequest-image-card {
+  height: 50vh;
+  width: 100vw;
 }
 
 .sidequest-review-card {
