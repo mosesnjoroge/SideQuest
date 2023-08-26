@@ -75,6 +75,7 @@ class TripsController < ApplicationController
     search_radius = trip_distance_in_meters / 1_000 / 5
 
     @sidequests = get_sidequests_within_radius_of_route(points, search_radius)
+
     @markers = @sidequests.map do |sidequest|
       {
         lat: sidequest.latitude,
@@ -94,8 +95,9 @@ class TripsController < ApplicationController
         image_url: helpers.asset_url("yellow.png")
       }
     end
-    @markers.unshift(start_end_markers.first) # add start point to begining of markers
-    @markers.push(start_end_markers.last) # end end point to end of markers
+
+    @markers.unshift(start_end_markers.first)
+    @markers.push(start_end_markers.last)
   end
 
   def destroy
@@ -128,7 +130,8 @@ class TripsController < ApplicationController
     mapbox_api_response = Net::HTTP.get_response(mapbox_api_url).body
     mapbox_api_json = JSON.parse(mapbox_api_response)
     mapbox_api_json['routes'][0]
-  end
+  end # <- Corrected placement of 'end'
+
 
   def distance(first, second)
     Geocoder::Calculations.distance_between(first, second)
@@ -169,6 +172,7 @@ class TripsController < ApplicationController
     end
     possible_sidequests.uniq! || []
   end
+end
 
   def trip_params
     params.require(:trip).permit(:start_location, :end_location, :categories)
@@ -184,4 +188,3 @@ class TripsController < ApplicationController
   def set_category
     @category = Category.find(side_quest_id: params[:id])
   end
-end

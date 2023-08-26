@@ -4,8 +4,6 @@ class SideQuestsController < ApplicationController
   before_action :set_trip, only: %i[index show]
 
   def index
-    # maybe we want SideQuest.where(user: current_user)?
-    # an index of ALL sidequests isn't helpful or interesting
     @sidequests = SideQuest.all
     @markers = @sidequests.geocoded.map do |sidequest|
       {
@@ -18,7 +16,6 @@ class SideQuestsController < ApplicationController
   end
 
   def show
-    # @TODO: use Reviews related to trip, not just the first two
     @reviews = @sidequest.reviews
     @review = Review.new
     @markers = [{
