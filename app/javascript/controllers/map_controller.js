@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus";
-import { Binding } from "@hotwired/stimulus/dist/types/core/binding";
 // Connects to data-controller="map"
 export default class extends Controller {
   static values = {
@@ -7,22 +6,55 @@ export default class extends Controller {
     markers: Array,
     trip: Object,
   };
+
   async connect() {
     const start = this.tripValue.start_geolocation;
     const end = this.tripValue.end_geolocation;
 
+    // Filter out start and end points
+    const waypoints = this.markersValue.filter(
+      (marker) => !marker.is_start_end
+    );
+
+    console.log(waypoints);
+
+    // Extract coordinates from waypoints
+    const waypointCoordinates = waypoints
+      .map((marker) => `${marker.lng},${marker.lat}`)
+      .join(";");
+
+    // Construct the complete coordinates string
+
+    // function reorderWaypoints(start, end, waypoints) {
+    //   let currentLocation = start;
+
+    //   while (waypoints.length > 0) {}
+    //   const distance = calculateDistance(currentLocation, waypoint);
+    // }
+
+    const coordinates = `${start.lon},${start.lat};${waypointCoordinates};${end.lon},${end.lat}`;
+
+    console.log(coordinates);
+
     mapboxgl.accessToken = this.apiKeyValue;
+
     const query = await fetch(
-      `https://api.mapbox.com/directions/v5/mapbox/driving/${start.lon},${start.lat};${end.lon},${end.lat}?steps=true&geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`,
+      `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?steps=true&geometries=geojson&overview=full&access_token=${mapboxgl.accessToken}`,
       { method: "GET" }
     );
+
     const json = await query.json();
     const data = json.routes[0];
+
+    console.log(data);
+
     const route = data.geometry.coordinates;
+
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v11",
     });
+
     this.map.on("load", () => {
       this.map.addSource("route", {
         type: "geojson",
@@ -35,6 +67,7 @@ export default class extends Controller {
           },
         },
       });
+
       if (window.location.pathname.includes("trips")) {
         this.map.addLayer({
           id: "route",
@@ -45,7 +78,7 @@ export default class extends Controller {
             "line-cap": "round",
           },
           paint: {
-            "line-color": "#D9D838",
+            "line-color": "black",
             "line-width": 8,
           },
         });
@@ -55,11 +88,11 @@ export default class extends Controller {
     this.#addMarkersToMap();
     this.#fitMapToMarkers();
 
-if (instructions) {
-  instructions.innerHTML = `<div>Trip duration:<br> <strong>${Math.floor(
-    data.duration / 60
-  )} minutes 🚙 </strong></div>`;
-}
+    const instructions = document.getElementById("instructions");
+    instructions.innerHTML = `<div>Trip duration:<br> <strong>${Math.floor(
+      data.duration / 60
+    )} minutes 🚙 </strong></div>`;
+  }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
@@ -71,9 +104,7 @@ if (instructions) {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup({ maxWidth: 1200 }).setHTML(
-        marker.info_window
-      );
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window);
       const customMarker = document.createElement("div");
       if (marker.is_start_end === true) {
         customMarker.className = "marker";
@@ -87,6 +118,7 @@ if (instructions) {
           .setLngLat([marker.lng, marker.lat])
           .addTo(this.map);
       } else if (marker.stop_is_in_trip) {
+        console.log("stop");
         customMarker.className = "marker";
         customMarker.style.backgroundImage = `url('${marker.image_url}')`;
         customMarker.style.backgroundSize = "cover";

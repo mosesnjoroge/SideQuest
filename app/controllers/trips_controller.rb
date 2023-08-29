@@ -130,7 +130,7 @@ class TripsController < ApplicationController
     mapbox_api_response = Net::HTTP.get_response(mapbox_api_url).body
     mapbox_api_json = JSON.parse(mapbox_api_response)
     mapbox_api_json['routes'][0]
-  end # <- Corrected placement of 'end'
+  end
 
 
   def distance(first, second)
