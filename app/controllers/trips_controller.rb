@@ -21,9 +21,19 @@ class TripsController < ApplicationController
         address: sidequest.address,
         stop_is_in_trip: Stop.where(trip: @trip, side_quest: sidequest).size.positive?,
         image_url: helpers.asset_url("gray.png"),
-        info_window: render_to_string(partial: "info_window", locals: {sidequest: sidequest}),
+        info_window: render_to_string(partial: "info_window", locals: { sidequest: sidequest }),
         trip_stop: true
       }
+    end
+
+    # Sort the markers based on proximity to start_geolocation
+    @markers.sort! do |a, b|
+      # Calculate the distances of each marker to start_geolocation
+      distance_a = calculate_distance(a[:lat], a[:lng], @trip.start_geolocation['lat'], @trip.start_geolocation['lon'])
+      distance_b = calculate_distance(b[:lat], b[:lng], @trip.start_geolocation['lat'], @trip.start_geolocation['lon'])
+
+      # Compare distances
+      distance_a <=> distance_b
     end
 
     @google_maps_directions_url = generate_google_maps_directions_url(@trip, @markers)
@@ -108,6 +118,29 @@ class TripsController < ApplicationController
   end
 
   private
+
+  def calculate_distance(lat1, lon1, lat2, lon2)
+    # Use the Haversine formula to calculate the distance
+    rad_lat1 = deg2rad(lat1.to_f)
+    rad_lon1 = deg2rad(lon1.to_f)
+    rad_lat2 = deg2rad(lat2.to_f)
+    rad_lon2 = deg2rad(lon2.to_f)
+
+    dlon = rad_lon2 - rad_lon1
+    dlat = rad_lat2 - rad_lat1
+
+    a = Math.sin(dlat / 2)**2 + Math.cos(rad_lat1) * Math.cos(rad_lat2) * Math.sin(dlon / 2)**2
+    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+
+    distance = 6371 * c # Radius of the Earth in km
+
+    return distance
+  end
+
+  # Convert degrees to radians
+  def deg2rad(deg)
+    return deg * (Math::PI / 180)
+  end
 
   def generate_google_maps_directions_url(start_end, waypoints)
     origin = CGI.escape(start_end.start_location)

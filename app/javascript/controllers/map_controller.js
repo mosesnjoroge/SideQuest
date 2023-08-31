@@ -18,41 +18,7 @@ export default class extends Controller {
       (marker) => !marker.is_start_end
     );
 
-    //     console.log(waypoints);
-
-    //     // Construct the complete coordinates string
-    //     function calculateDistance(start_point, waypoint) {
-    //       const lat1 = start_point.lat;
-    //       const lon1 = start_point.lon;
-    //       const lat2 = waypoint.lat;
-    //       const lon2 = waypoint.lng;
-
-    //         const R = 6371; // Earth's radius in kilometers
-    //     const dLat = (lat2 - lat1) * (Math.PI / 180); // Difference in latitude
-    //     const dLon = (lon2 - lon1) * (Math.PI / 180); // Difference in longitude
-
-    //     // Haversine formula
-    //     const a =
-    //       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    //       Math.cos(lat1 * (Math.PI / 180)) *
-    //         Math.cos(lat2 * (Math.PI / 180)) *
-    //         Math.sin(dLon / 2) *
-    //         Math.sin(dLon / 2);
-
-    //     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    //     const distance = R * c; // Distance in kilometers
-
-    //     return distance;
-    // }
-    //     }
-
-    //     function reorderWaypoints(start, waypoints) {
-    //       waypoints.sort((waypoint1, waypoint2) => {
-    //         const distanceToA = calculateDistance(start, waypoint1);
-    //         const distancetoB = calculateDistance(start, waypoint2);
-    //         return distancetoA - distanceToB;
-    //       });
-    //     }
+    console.log(waypoints);
 
     // Extract coordinates from waypoints
     const waypointCoordinates = waypoints
@@ -113,7 +79,7 @@ export default class extends Controller {
             "line-cap": "round",
           },
           paint: {
-            "line-color": "black",
+            "line-color": "#dc3545",
             "line-width": 8,
           },
         });
