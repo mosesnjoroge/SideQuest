@@ -11,30 +11,57 @@ export default class extends Controller {
     const start = this.tripValue.start_geolocation;
     const end = this.tripValue.end_geolocation;
 
+    console.log(start);
+
     // Filter out start and end points
     const waypoints = this.markersValue.filter(
       (marker) => !marker.is_start_end
     );
 
-    console.log(waypoints);
+    //     console.log(waypoints);
+
+    //     // Construct the complete coordinates string
+    //     function calculateDistance(start_point, waypoint) {
+    //       const lat1 = start_point.lat;
+    //       const lon1 = start_point.lon;
+    //       const lat2 = waypoint.lat;
+    //       const lon2 = waypoint.lng;
+
+    //         const R = 6371; // Earth's radius in kilometers
+    //     const dLat = (lat2 - lat1) * (Math.PI / 180); // Difference in latitude
+    //     const dLon = (lon2 - lon1) * (Math.PI / 180); // Difference in longitude
+
+    //     // Haversine formula
+    //     const a =
+    //       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    //       Math.cos(lat1 * (Math.PI / 180)) *
+    //         Math.cos(lat2 * (Math.PI / 180)) *
+    //         Math.sin(dLon / 2) *
+    //         Math.sin(dLon / 2);
+
+    //     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    //     const distance = R * c; // Distance in kilometers
+
+    //     return distance;
+    // }
+    //     }
+
+    //     function reorderWaypoints(start, waypoints) {
+    //       waypoints.sort((waypoint1, waypoint2) => {
+    //         const distanceToA = calculateDistance(start, waypoint1);
+    //         const distancetoB = calculateDistance(start, waypoint2);
+    //         return distancetoA - distanceToB;
+    //       });
+    //     }
 
     // Extract coordinates from waypoints
     const waypointCoordinates = waypoints
       .map((marker) => `${marker.lng},${marker.lat}`)
       .join(";");
 
-    // Construct the complete coordinates string
-
-    // function reorderWaypoints(start, end, waypoints) {
-    //   let currentLocation = start;
-
-    //   while (waypoints.length > 0) {}
-    //   const distance = calculateDistance(currentLocation, waypoint);
-    // }
+    //    console.log(waypointCoordinates);
 
     const coordinates = `${start.lon},${start.lat};${waypointCoordinates};${end.lon},${end.lat}`;
-
-    console.log(coordinates);
 
     mapboxgl.accessToken = this.apiKeyValue;
 
@@ -68,7 +95,15 @@ export default class extends Controller {
         },
       });
 
-      if (window.location.pathname.includes("trips")) {
+      const currentPath = window.location.pathname;
+
+      // Define a regex pattern to match /trips/ followed by one or more digits
+      const tripsPattern = /\/trips\/\d+/;
+
+      // Define a regex pattern to match /trips/ followed by one or more digits and /edit
+      const editPattern = /\/trips\/\d+\/edit/;
+
+      if (tripsPattern.test(currentPath) && !editPattern.test(currentPath)) {
         this.map.addLayer({
           id: "route",
           type: "line",
