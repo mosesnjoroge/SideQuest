@@ -37,6 +37,8 @@ export default class extends Controller {
     );
 
     const json = await query.json();
+    console.log(json);
+
     const data = json.routes[0];
 
     console.log(data);
@@ -90,9 +92,14 @@ export default class extends Controller {
     this.#fitMapToMarkers();
 
     const instructions = document.getElementById("instructions");
-    instructions.innerHTML = `<div>Trip duration:<br> <strong>${Math.floor(
+    const steps = data.legs[0].steps;
+    let tripInstructions = "";
+    for (const step of steps) {
+      tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+    }
+    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
       data.duration / 60
-    )} minutes 🚙 </strong></div>`;
+    )} min  </strong></p><ol>${tripInstructions}</ol>`;
   }
 
   #fitMapToMarkers() {
