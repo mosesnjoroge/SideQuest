@@ -22,8 +22,8 @@ default: &default
 development:
   <<: *default
   database: _SideQuest_development
-  username: postgres  # Update with your new username
-  password: fn1228    # Update with your new password
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
   host: 127.0.0.1
   port: 5432
 

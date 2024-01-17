@@ -1,10 +1,9 @@
 cloudinary:
   service: Cloudinary
-  cloud_name: "djxezhmty"
-  api_key: "157424545157619"
-  api_secret: "0-ORTW7tSfLo67aHJxXSCCKcyPI"
+  cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
   folder: <%= Rails.env %>
-
 
 test:
   service: Disk
