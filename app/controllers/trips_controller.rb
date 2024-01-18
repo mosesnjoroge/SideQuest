@@ -43,7 +43,7 @@ class TripsController < ApplicationController
         lat: location['lat'],
         lng: location['lon'],
         is_start_end: true,
-        image_url: helpers.asset_url("yellow.png")
+        image_url: helpers.asset_url("red.png")
       }
     end
     @markers.unshift(start_end_markers.first)
