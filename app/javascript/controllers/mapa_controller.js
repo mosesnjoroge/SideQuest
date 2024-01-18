@@ -22,7 +22,7 @@ export default class extends Controller {
     const route = data.geometry.coordinates;
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/navigation-night-v1",
     });
     this.map.on("load", () => {
       this.map.addSource("route", {
