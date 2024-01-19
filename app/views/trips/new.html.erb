@@ -38,18 +38,18 @@
   </div>
 </div>
 <%= simple_form_for @trip do |f| %>
-  <div class = "container mt-3">
+  <div class="container mt-3">
     <div class="field">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <%= f.input :start_location, :label => "Origin", input_html: { placeholder: "Enter your starting point" } %>
+      <%= f.input :start_location, label: "Origin", input_html: { placeholder: "Enter your starting point", style: "font-family: 'Arial', sans-serif; font-size: 16px;" } %>
     </div>
     <div class="field">
       <i class="fa-solid fa-magnifying-glass"></i>
-<%= f.input :end_location, label: "Destination", input_html: { placeholder: "Enter your destination" } %>
+      <%= f.input :end_location, label: "Destination", input_html: { placeholder: "Enter your destination", style: "font-family: 'Arial', sans-serif; font-size: 16px;" } %>
     </div>
   </div>
 
-  <div class = "footer-info">
-      <%= f.button :submit, 'SEARCH', class: "foottext"%>
+  <div class="footer-info">
+    <%= f.button :submit, 'SEARCH', class: "foottext" %>
   </div>
-<%end %>
+<% end %>
