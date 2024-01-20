@@ -1,8 +1,6 @@
 require 'json'
 require 'net/http'
 
-
-
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[show update destroy edit]
 
