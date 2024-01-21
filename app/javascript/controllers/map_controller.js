@@ -25,8 +25,6 @@ export default class extends Controller {
       .map((marker) => `${marker.lng},${marker.lat}`)
       .join(";");
 
-    //    console.log(waypointCoordinates);
-
     const coordinates = `${start.lon},${start.lat};${waypointCoordinates};${end.lon},${end.lat}`;
 
     mapboxgl.accessToken = this.apiKeyValue;
@@ -94,12 +92,16 @@ export default class extends Controller {
     const instructions = document.getElementById("instructions");
     const steps = data.legs[0].steps;
     let tripInstructions = "";
+
+    // Calculate duration in hours and minutes
+    const durationHours = Math.floor(data.duration / 3600);
+    const durationMinutes = Math.floor((data.duration % 3600) / 60);
+
     for (const step of steps) {
       tripInstructions += `<li>${step.maneuver.instruction}</li>`;
     }
-    instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-      data.duration / 60
-    )} min  </strong></p><ol>${tripInstructions}</ol>`;
+
+    instructions.innerHTML = `<p><strong>Trip duration: ${durationHours} hours and ${durationMinutes} minutes</strong></p><ol>${tripInstructions}</ol>`;
   }
 
   #fitMapToMarkers() {
@@ -147,6 +149,7 @@ export default class extends Controller {
       }
     });
   }
+
   closePopup() {
     this.map.closePopup();
   }
