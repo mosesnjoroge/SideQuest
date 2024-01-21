@@ -34,8 +34,6 @@ class TripsController < ApplicationController
       distance_a <=> distance_b
     end
 
-    @google_maps_directions_url = generate_google_maps_directions_url(@trip, @markers)
-
     start_end_markers = [@trip.start_geolocation, @trip.end_geolocation].map do |location|
       {
         lat: location['lat'],
@@ -138,17 +136,6 @@ class TripsController < ApplicationController
   # Convert degrees to radians
   def deg2rad(deg)
     return deg * (Math::PI / 180)
-  end
-
-  def generate_google_maps_directions_url(start_end, waypoints)
-    origin = CGI.escape(start_end.start_location)
-    destination = CGI.escape(start_end.end_location)
-
-    waypoints_encoded = waypoints.map do |waypoint|
-      CGI.escape("#{waypoint[:name]}, #{waypoint[:address]}")
-    end
-
-    "https://www.google.com/maps/dir/?api=1&origin=#{origin}&destination=#{destination}&waypoints=#{waypoints_encoded.join('|')}"
   end
 
   def get_mapbox_route_info_for_trip(start_location, end_location)
